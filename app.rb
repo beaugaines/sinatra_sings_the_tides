@@ -15,7 +15,7 @@ set :public_dir, 'public'
 
 
 configure do
-  set :haml, { :format => :html5, :escape_html => true }
+  # set :haml, { :format => :html5, :escape_html => true }
   set :sass, { :style => :compact, :debug_info => false }
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
