@@ -30,33 +30,29 @@ a
   &:visited
     // Default style for visited links
 
-body
-  @include span-columns(10,12)
-  +font-default
-  background: #fff
-  color: #0d0d0d
-  h1
-    position: absolute
-    top: 50%
-    left: 0
-    font-size: 40px
-    font-weight: bold
-    margin-top: -40px
-    text-align: center
-    width: 100%
+header
+  +border-radius(6px)
+  background: #e7e7e7
+  border: 1px solid #ccc
+  margin-top: 10px
+  margin-left: 10px
+  margin-right: 10px
+  height: 3em
+  padding: 0 15px
+
+nav.main
+  float: right
+  padding-right: 1em
   ul
-    +border-radius(6px)
-    background: #e7e7e7
-    border: 1px solid #ccc
-    margin-top: 10px
-    margin-left: 10px
-    margin-right: 10px
     li
       display: inline
-      line-height: 30px
-      padding: 0 15px
       a
         color: #000
         text-decoration: none
         &:hover
           text-decoration: underline
+body
+  @include span-columns(10,12)
+  +font-default
+  background: #fff
+  color: #0d0d0d

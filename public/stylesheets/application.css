@@ -81,26 +81,7 @@ a:focus, a:active {
   outline: none;
 }
 
-body {
-  width: 83.05085%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-  font: 16px "Helvetica Neue", sans-serif;
-  background: white;
-  color: #0d0d0d;
-}
-body h1 {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  font-size: 40px;
-  font-weight: bold;
-  margin-top: -40px;
-  text-align: center;
-  width: 100%;
-}
-body ul {
+header {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
@@ -111,16 +92,31 @@ body ul {
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
-}
-body ul li {
-  display: inline;
-  line-height: 30px;
+  height: 3em;
   padding: 0 15px;
 }
-body ul li a {
+
+nav.main {
+  float: right;
+  padding-right: 1em;
+}
+nav.main ul li {
+  display: inline;
+}
+nav.main ul li a {
   color: black;
   text-decoration: none;
 }
-body ul li a:hover {
+nav.main ul li a:hover {
   text-decoration: underline;
+}
+
+body {
+  width: 83.05085%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  font: 16px "Helvetica Neue", sans-serif;
+  background: white;
+  color: #0d0d0d;
 }
