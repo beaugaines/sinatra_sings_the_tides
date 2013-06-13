@@ -9,7 +9,6 @@ gem 'haml'
 gem 'susy'
 gem 'compass'
 gem 'coffee-script'
-gem 'therubyracer'
 
 # utilities
 gem 'rake'

@@ -1,7 +1,6 @@
 require 'compass'
 require 'sinatra'
 require 'sinatra/reloader'
-require 'coffee-script'
 require 'wunderground'
 require 'geocoder'
 require 'haml'
@@ -83,9 +82,6 @@ get '/stylesheets/:name.css' do
   sass(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
 end
 
-get '/application.js' do
-  coffee :application
-end
 
 # # errors!
 
