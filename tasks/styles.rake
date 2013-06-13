@@ -18,21 +18,34 @@ namespace :styles do
       system 'compass stats' >> "#{log_dir}/#{filename}"
       puts "** Created #{log_dir}/#{filename}"
     end
+  end
 
-    desc 'clear styles'
-    task :clear => ["compile:clear"]
+  desc 'clear styles'
+  task :clear => ["compile:clear"]
 
-    desc 'watch and compile'
-    task :watch do
-      system 'compass watch'
+  desc 'watch and compile'
+  task :watch do
+    system 'compass watch'
+  end
+
+  desc 'list styles'
+  task :list do
+    system 'ls -lh public/stylesheets'
+  end
+
+  desc 'compile new stylesheets'
+  task :compile => ["compile:default"]
+
+  namespace :compile do
+
+    task :clear do
+      puts '*** clearing styles ***'
+      system 'rm -Rfv public/stylesheets/*'
     end
 
-    desc 'list styles'
-    task :list do
-      system 'ls -lh public/stylesheets'
+    task :default do
+      puts '*** compiling styles ***'
+      system 'compass compile'
     end
-
-    desc 'compile new stylesheets'
-    task :compile => ["compile:default"]
-
-    
+  end
+end
