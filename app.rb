@@ -3,6 +3,7 @@ require 'sinatra'
 require 'wunderground'
 require 'geocoder'
 require 'haml'
+require 'susy'
 require 'fuzzy_time'
 
 # helpers

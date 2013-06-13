@@ -54,6 +54,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
+html {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 8.47458%;
+}
+html:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 a {
   color: #3366cc;
 }
@@ -66,6 +82,10 @@ a:focus, a:active {
 }
 
 body {
+  width: 83.05085%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
   font: 16px "Helvetica Neue", sans-serif;
   background: white;
   color: #0d0d0d;
