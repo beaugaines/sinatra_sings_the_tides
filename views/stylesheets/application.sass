@@ -3,24 +3,12 @@
 @import compass/utilities
 @import compass/css3
 @import susy
+@import base
 
-
-// susy vars
-$total-columns  : 12             // a 12-column grid
-$column-width   : 4em            // each column is 4em wide
-$gutter-width   : 1em            // 1em gutters between columns
-$grid-padding   : $gutter-width  // grid-padding equal to gutters
-
-@import url(http://fonts.googleapis.com/css?family=Ewert)
-
-+font-face('Sacramento', font-files('sacramento-regular-webfont.eot', 'sacramento-regular-webfont.svg', 'sacremento-regular-webfont.ttf', 'sacramento-regular-webfont.woff'))
 
 html
   @include container
   vertical-align: baseline !important
-// Base font
-=font-default
-  font: 1.6em 'Sacramento', 'Helvetica Neue', sans-serif
   
 // Links
 a
