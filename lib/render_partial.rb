@@ -7,6 +7,13 @@ module Sinatra
       haml page, options.merge!(:layout => false)
     end
   end
+
+  module ImageUrl
+    def img name
+      "<img src='/images/#{name}' alt='#{name}'>"
+    end
+  end
  
   helpers RenderPartial
+  helpers ImageUrl
 end

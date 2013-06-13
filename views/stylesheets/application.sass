@@ -11,12 +11,16 @@ $column-width   : 4em            // each column is 4em wide
 $gutter-width   : 1em            // 1em gutters between columns
 $grid-padding   : $gutter-width  // grid-padding equal to gutters
 
+@import url(http://fonts.googleapis.com/css?family=Ewert)
+
++font-face('Sacramento', font-files('sacramento-regular-webfont.eot', 'sacramento-regular-webfont.svg', 'sacremento-regular-webfont.ttf', 'sacramento-regular-webfont.woff'))
+
 html
   @include container
-  @include pre(1)
+  vertical-align: baseline !important
 // Base font
 =font-default
-  font: 16px 'Helvetica Neue', sans-serif
+  font: 1.6em 'Sacramento', 'Helvetica Neue', sans-serif
   
 // Links
 a
@@ -34,25 +38,40 @@ header
   +border-radius(6px)
   background: #e7e7e7
   border: 1px solid #ccc
-  margin-top: 10px
-  margin-left: 10px
-  margin-right: 10px
+  margin: 1em 1em
   height: 3em
   padding: 0 15px
+  .logo
+    @include span-columns(12,12)
 
-nav.main
-  float: right
-  padding-right: 1em
-  ul
-    li
-      display: inline
-      a
-        color: #000
-        text-decoration: none
-        &:hover
-          text-decoration: underline
 body
-  @include span-columns(10,12)
   +font-default
-  background: #fff
+  background: #eee
   color: #0d0d0d
+
+.frank
+  @include span-columns(6,12)
+  background: image-url('frank.png') no-repeat
+  height: image-height('frank.jpg')
+  background-size: contain
+
+.tides
+  @include span-columns(6 omega, 12)
+
+footer
+  padding-top: 1em
+  height: 3em
+  clear: both
+  nav.main
+    padding-right: 1em
+    ul
+      float: left
+      li
+        display: inline
+        a
+          color: #000
+          text-decoration: none
+          &:hover
+            text-decoration: underline
+  .copy
+    float: right
