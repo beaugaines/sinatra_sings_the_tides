@@ -4,7 +4,7 @@ gem 'sinatra'
 gem 'haml'
 gem 'susy'
 gem 'rake'
-
+gem 'compass'
 gem 'geocoder'
 gem 'wunderground'
 gem 'fuzzy_time'
