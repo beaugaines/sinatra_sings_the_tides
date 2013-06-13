@@ -1,5 +1,6 @@
 require 'compass'
 require 'sinatra'
+require 'sinatra/reloader' if development?
 require 'wunderground'
 require 'geocoder'
 require 'haml'
@@ -29,13 +30,15 @@ before do
     w_api = Wunderground.new("7d43f996448b0cfa")
     # get request ip - hardcoded for now
     # loc = Geocoder.search(request.ip)
-    @loc = Geocoder.search("64.148.1.83")[0].latitude
+    @loc = Geocoder.search("64.148.1.83")
     # parse lat and long
-    # lat, long = @loc[0].latitude, @loc[0].longitude
+    lat, long = @loc[0].latitude, @loc[0].longitude
     # retrieve tides object
-    # tides = w_api.tide_for(lat, long)
+    tides = w_api.tide_for("#{lat},#{long}")
     # get low tide
-    # @low_tide_time = tides['tide']['tideSummary']['date']['pretty']
+    @low_tide_time = tides['tide']['tideSummary'][1]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
+    @high_tide_time = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
+    @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
 
 end
   # before {@loc = request.location.city}
