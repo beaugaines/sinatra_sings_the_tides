@@ -5,6 +5,7 @@
 @import susy
 @import base
 
+
 /* BASE */
 
 html
@@ -13,13 +14,14 @@ html
   
 // Links
 a
-  color: #3366CC
+  color: $link-color
   &:hover
-    color: #3366CC
+    color: $visited-link
     text-decoration: none
   &:focus,
   &:active
     outline: none
+    color: $visited-link
   &:visited
     // Default style for visited links
 
@@ -28,7 +30,7 @@ a
 
 header
   +border-radius(6px)
-  background: #e7e7e7
+  background: $sinatra-orange
   border: 1px solid #ccc
   margin: 1em 1em
   height: 3em
@@ -38,7 +40,7 @@ header
 
 body
   +font-default
-  background: #eee
+  background: $sinatra-blue
   color: #0d0d0d
 
 .frank
@@ -49,11 +51,18 @@ body
 
 .tides
   @include span-columns(6 omega, 12)
+  .low_tide
+    background: $sinatra-pink
+  .high_tide
+    background: $sinatra-violet
+  .tomorrow_tide
+    background: $sinatra-scarlet
 
 
 /* FOOTER */
 
 footer
+  background: $sinatra-mustard
   padding-top: 1em
   height: 3em
   clear: both

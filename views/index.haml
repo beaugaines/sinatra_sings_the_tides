@@ -1,8 +1,14 @@
 .frank
 .tides
   %p next low tide
-  = @low_tide_time
+  .low_tide
+    %p about 8'oclock in the AM
+    = @low_tide_time
   %p next high tide
-  = @high_tide_time
+  .high_tide
+    %p 9:30ish
+    = @high_tide_time
   %p and tomorrow!
-  = @high_tide_tomorrow
+  .tomorrow_tide
+    %p 3:20 in the PM
+    = @high_tide_tomorrow
