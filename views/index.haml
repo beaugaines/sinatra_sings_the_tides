@@ -1,14 +1,33 @@
-.frank
-.tides
-  %p next low tide
-  .low_tide
-    %p about 8'oclock in the AM
-    = @low_tide_time
-  %p next high tide
-  .high_tide
-    %p 9:30ish
-    = @high_tide_time
-  %p and tomorrow!
-  .tomorrow_tide
-    %p 3:20 in the PM
-    = @high_tide_tomorrow
+.main
+  .frank
+  .tides
+    %p next low tide
+    .low_tide
+      %p about 8'oclock in the AM
+      = @low_tide_time
+    %p next high tide
+    .high_tide
+      %p 9:30ish
+      = @high_tide_time
+    %p and tomorrow!
+    .tomorrow_tide
+      %p 3:20 in the PM
+      = @high_tide_tomorrow
+.secondary
+  .buy_links
+    .caption
+      %p
+        Going to the beach?  You just might like
+        %a{:href => "javascript:void(null)", :id => 'rollup'} some of these items
+      / %img{:id => 'rollup', :src => "#", :alt => "rollup", :title => 'rolls up the module'}/ 
+    #content
+      %p Pork beef short ribs brisket strip steak tenderloin. Tongue sirloin chuck, beef ribs t-bone pork loin tri-tip beef jerky meatloaf rump pork chop corned beef fatback. Sausage tongue pork belly venison, bacon pork jowl pastrami sirloin brisket rump salami. Chicken pig rump, tail shankle boudin ground round ham hock tri-tip leberkas speck turkey t-bone strip steak. Frankfurter shank turducken sausage, kielbasa boudin prosciutto tri-tip meatloaf chicken jowl salami pig.
+  .ebb_tide
+    %p
+      "First the tide rushes in
+      %br/ 
+      Plants a kiss on the shore
+      %br/ 
+      Then rolls out to sea
+      %br/ 
+      And the sea is very still once more"
