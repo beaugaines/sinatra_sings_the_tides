@@ -198,7 +198,10 @@ footer {
   clear: both;
 }
 footer nav.main {
-  padding-right: 1em;
+  width: 49.15254%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
 }
 footer nav.main ul {
   float: left;
@@ -207,6 +210,13 @@ footer nav.main ul li {
   display: inline;
 }
 footer .copy {
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+footer .copy p {
   float: right;
 }
 footer .copy span {

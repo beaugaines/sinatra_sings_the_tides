@@ -18,7 +18,7 @@
 html
   @include container
   vertical-align: baseline !important
-  
+
 // Links
 a
   color: $link-color
@@ -107,12 +107,16 @@ footer
   height: 3em
   clear: both
   nav.main
-    padding-right: 1em
+    @include span-columns(6,12)
+    // padding-left: 1em
     ul
       float: left
       li
         display: inline
   .copy
-    float: right
+    @include span-columns(6 omega,12)
+    // padding-right: 1em
+    p
+      float: right
     span
       color: $link-color
