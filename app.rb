@@ -1,6 +1,7 @@
 require 'compass'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sinatra/static_assets'
 require 'wunderground'
 require 'geocoder'
 require 'haml'
