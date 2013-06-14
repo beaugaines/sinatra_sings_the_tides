@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # base
 gem 'sinatra'
 gem 'sinatra-contrib'
-
+gem 'sinatra-static-assets'
 # styles
 gem 'haml'
 gem 'susy'
