@@ -10,3 +10,6 @@ $(document).ready ->
   $('#rollup').show()
   $('#rollup').click ->
     $('#content').slideToggle()
+
+$(document).ready ->
+  

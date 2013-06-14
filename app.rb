@@ -61,13 +61,11 @@ before do
     # @low_tide_time = tides['tide']['tideSummary'][1]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
     # @high_tide_time = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
     # @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-    @low_tide_time = Time.at(tides['tide']['tideSummary'][1]['date']['epoch'].to_i).fuzzy
-    @high_tide_time = Time.at(tides['tide']['tideSummary'][3]['date']['epoch'].to_i).fuzzy
+    @low_tide_time = Time.at(tides['tide']['tideSummary'][0]['date']['epoch'].to_i).fuzzy
+    @low_tide_time = Time.at(tides['tide']['tideSummary'][3]['date']['epoch'].to_i).fuzzy
     @high_tide_tomorrow = Time.at(tides['tide']['tideSummary'][7]['date']['epoch'].to_i).fuzzy
 
 end
-  # before {@loc = request.location.city}
-  before { @title = 'Hey there!' }
 
 # routes
 get '/' do
@@ -78,21 +76,19 @@ get '/about' do
   haml :about, :layout => :'layouts/application'
 end
 
-get '/stylesheets/:name.css' do
-  content_type 'text/css', :charset => 'utf-8'
-  sass(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
+post '/tides' do
+  if params([:zip]).exists?
+    zip = params([:zip])
+  else
+    city = params([:city])
+    state = params([:state])
+  end
+  
 end
 
+# get '/stylesheets/:name.css' do
+#   content_type 'text/css', :charset => 'utf-8'
+#   sass(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
+# end
 
-# # errors!
 
-# not_found { haml: '404' }
-# error { haml: '500' }
-
-# @@404
-# %h1 404!
-# %p No page like that here.
-
-# @@500
-# %h1 500!
-# %p There was an error.  Sorry about that.
