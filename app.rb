@@ -47,25 +47,25 @@ def get_tides
 end
 
 
-# before do
-#     # new wunderground object
-#     @w_api ||= Wunderground.new("7d43f996448b0cfa")
-#     # get request ip - hardcoded for now
-#     # loc = Geocoder.search(request.ip)
-#     @loc = Geocoder.search("64.148.1.83")
-#     # parse lat and long
-#     lat, long = @loc[0].latitude, @loc[0].longitude
-#     # retrieve tides object
-#     tides = @w_api.tide_for("#{lat},#{long}")
-#     # get low tide
-#     # @low_tide_time = tides['tide']['tideSummary'][1]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-#     # @high_tide_time = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-#     # @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-#     @low_tide_time = Time.at(tides['tide']['tideSummary'][1]['date']['epoch'].to_i).fuzzy
-#     @high_tide_time = Time.at(tides['tide']['tideSummary'][3]['date']['epoch'].to_i).fuzzy
-#     @high_tide_tomorrow = Time.at(tides['tide']['tideSummary'][7]['date']['epoch'].to_i).fuzzy
+before do
+    # new wunderground object
+    @w_api ||= Wunderground.new("7d43f996448b0cfa")
+    # get request ip - hardcoded for now
+    # loc = Geocoder.search(request.ip)
+    @loc = Geocoder.search("64.148.1.83")
+    # parse lat and long
+    lat, long = @loc[0].latitude, @loc[0].longitude
+    # retrieve tides object
+    tides = @w_api.tide_for("#{lat},#{long}")
+    # get low tide
+    # @low_tide_time = tides['tide']['tideSummary'][1]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
+    # @high_tide_time = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
+    # @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
+    @low_tide_time = Time.at(tides['tide']['tideSummary'][1]['date']['epoch'].to_i).fuzzy
+    @high_tide_time = Time.at(tides['tide']['tideSummary'][3]['date']['epoch'].to_i).fuzzy
+    @high_tide_tomorrow = Time.at(tides['tide']['tideSummary'][7]['date']['epoch'].to_i).fuzzy
 
-# end
+end
   # before {@loc = request.location.city}
   before { @title = 'Hey there!' }
 
