@@ -3,16 +3,16 @@
   .tides
     %p next low tide
     .low_tide
-      %p about 8'oclock in the AM
-      = @low_tide_time
+      / %p about 8'oclock in the AM
+      = "#{@low_tide_time} in the AM"
     %p next high tide
     .high_tide
-      %p 9:30ish
-      = @high_tide_time
+      / %p 9:30ish
+      = "#{@high_tide_time}ish"
     %p and tomorrow!
     .tomorrow_tide
-      %p 3:20 in the PM
-      = @high_tide_tomorrow
+      / %p 3:20 in the PM
+      = "about #{@high_tide_tomorrow} in the PM"
 .secondary
   .buy_links
     .caption
