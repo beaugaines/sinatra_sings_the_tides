@@ -154,6 +154,15 @@ body {
   padding: 0.3em 0;
 }
 
+.burger_bullet {
+  margin-left: 0;
+}
+.burger_bullet li {
+  padding-left: 5px;
+  background: url('/images/shooting_star_small.png?1371181292') no-repeat -10px 0px;
+  list-style-type: none;
+}
+
 .secondary .buy_links {
   width: 49.15254%;
   float: left;
@@ -162,6 +171,9 @@ body {
 }
 .secondary .buy_links #content {
   display: none;
+}
+.secondary .buy_links #content li a {
+  padding-left: 1.8em;
 }
 .secondary .ebb_tide {
   width: 49.15254%;
