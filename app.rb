@@ -42,9 +42,6 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
-def get_tides
-  w_api ||= Wunderground.new("7d43f996448b0cfa")  
-end
 
 
 before do
@@ -76,6 +73,7 @@ get '/about' do
   haml :about, :layout => :'layouts/application'
 end
 
+
 post '/tides' do
   if params([:zip]).exists?
     zip = params([:zip])
@@ -83,7 +81,17 @@ post '/tides' do
     city = params([:city])
     state = params([:state])
   end
+  tides = @w_api.tide_for(state, city)
+
+  time, meridian = tides['tide']['tideSummary'][1]['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
+  if meridian == 'PM':
+    @low_tide_time = "#{time} in the PM"
+  else
+    @low_tide_time = "#{time} in the AM"
+  end
   
+  time, meridian = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
+  @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
 end
 
 # get '/stylesheets/:name.css' do
