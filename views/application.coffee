@@ -9,14 +9,14 @@
 
 
 $ ->
-  $("#search").submit (e) ->
+  $("#search_form").submit (e) ->
     e.preventDefault()
     $.ajax
       type: "POST"
       url: "/"
       data: @serialize()
       success: ->
-        $('#search').hide()
+        $('#search_form').hide()
         $('#results').show()
         $('#results').html('Next high tide at ' + @tide_1)
       error: ->
