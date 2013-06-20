@@ -14,7 +14,7 @@ $ ->
     $.ajax
       type: "POST"
       url: "/"
-      data: @serialize()
+      data: $('form#search_form').serialize()
       success: ->
         $('#search_form').hide()
         $('#results').show()

@@ -6,7 +6,7 @@
       return $.ajax({
         type: "POST",
         url: "/",
-        data: this.serialize(),
+        data: $('form#search_form').serialize(),
         success: function() {
           $('#search_form').hide();
           $('#results').show();
