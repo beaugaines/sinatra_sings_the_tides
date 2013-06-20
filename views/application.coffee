@@ -9,7 +9,7 @@
 
 
 $ ->
-  $("#search_form").submit (e) ->
+  $("").submit (e) ->
     e.preventDefault()
     $.ajax
       type: "POST"

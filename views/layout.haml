@@ -11,6 +11,8 @@
     
   %body
     = partial :_nav_main
-    = yield
-    = partial :_analytics
-    = partial :_footer
+    .main
+      .frank
+      = yield
+      = partial :_analytics
+      = partial :_footer

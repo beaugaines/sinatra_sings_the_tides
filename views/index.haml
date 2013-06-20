@@ -1,33 +1,31 @@
-.main
-  .frank
-  .tides
-    #geoloc
-    #search
-      %form{:action => "", :method => 'post', :name => 'search', :id => 'search_form'} 
-        %fieldset 
-          %ul
-            %li 
-              %label{:for => "city"} City:
-              %input{:type => "text", :name => "city"}/ 
-            %li 
-              %label{:for => "state"} State:
-              %input{:type => "text", :name => 'state'}/ 
-            %li 
-              %input{:type => "submit", :class => 'button', :name => 'submit'}/ 
-    #results
+.tides
+  #geoloc
+  #search
+    %form{:action => "/tides", :method => 'post', :name => 'search', :id => 'search_form'} 
+      %fieldset 
+        %ul
+          %li 
+            %label{:for => "city"} City:
+            %input{:type => "text", :name => "city"}/ 
+          %li 
+            %label{:for => "state"} State:
+            %input{:type => "text", :name => 'state'}/ 
+          %li 
+            %input{:type => "submit", :class => 'button', :name => 'submit'}/ 
+  #results
 
-    / %p next low tide
-    / .low_tide
-    /   / %p about 8'oclock in the AM
-    /   = "#{@low_tide_time} in the AM"
-    / %p next high tide
-    / .high_tide
-    /   / %p 9:30ish
-    /   = "#{@high_tide_time}ish"
-    / %p and tomorrow!
-    / .tomorrow_tide
-    /   / %p 3:20 in the PM
-    /   = "about #{@high_tide_tomorrow} in the PM"
+  / %p next low tide
+  / .low_tide
+  /   / %p about 8'oclock in the AM
+  /   = "#{@low_tide_time} in the AM"
+  / %p next high tide
+  / .high_tide
+  /   / %p 9:30ish
+  /   = "#{@high_tide_time}ish"
+  / %p and tomorrow!
+  / .tomorrow_tide
+  /   / %p 3:20 in the PM
+  /   = "about #{@high_tide_tomorrow} in the PM"
 .secondary
   .buy_links
     .caption
