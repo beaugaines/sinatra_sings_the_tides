@@ -4,6 +4,7 @@ require 'sinatra/static_assets'
 require 'wunderground'
 require 'haml'
 require 'susy'
+require 'sassy-buttons'
 
 
 # monkey patch Time
