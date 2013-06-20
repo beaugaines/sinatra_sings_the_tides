@@ -67,19 +67,21 @@ get '/' do
   haml :index
 end
 
-get '/about' do
-  haml :about, :layout => :'layouts/application'
+def fetch_tides(state, city)
+  tides = @w_api.tide_for(state, city)
+  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..2]
 end
 
-
-post '/' do
-  puts params.inspect
+post '/tides' do
   upcoming_tides = []
   city = params[:city]
   state = params[:state]
-  tides = @w_api.tide_for(state, city)
-  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..2]
-  next_highs.each_with_index do |item|
+  next_highs = fetch_tides(state, city)
+  if next_highs.first > Time.now
+    last_high = next_highs.first - 12*60*60
+    @last_high = last_high.strftime('%I:%M')
+    upcoming_tides << @last_high
+  next_highs.each do |item|
     time, meridian =  item['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
     if meridian == 'PM'
       upcoming_tides << "#{time} in the PM"
@@ -87,18 +89,13 @@ post '/' do
       upcoming_tides << "#{time} in the AM"
     end
   end
-  @tide1 = upcoming_tides[0]
-  @tide2 = upcoming_tides[1]
-  @tide3 = upcoming_tides[2]
+  @last_high = upcoming_tides[0]
+  @tide1 = upcoming_tides[1]
+  @tide2 = upcoming_tides[2]
+  tide_differential = (@tide2 - @tide1).to_i/360
+  @last_tide = @tide1 - tide_differential*60*60
+  haml :tides, :layout => true
 end
   
-  # time, meridian = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-  # @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-
-
-# get '/stylesheets/:name.css' do
-#   content_type 'text/css', :charset => 'utf-8'
-#   sass(:"stylesheets/#{params[:name]}", Compass.sass_engine_options)
-# end
 
 

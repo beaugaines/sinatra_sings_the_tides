@@ -59,6 +59,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   src: url('/public/stylesheets/fonts/sacramento-regular-webfont.eot') format('embedded-opentype'), url('/public/stylesheets/fonts/sacramento-regular-webfont.svg') format('svg'), url('/public/stylesheets/fonts/sacremento-regular-webfont.ttf') format('truetype'), url('/public/stylesheets/fonts/sacramento-regular-webfont.woff') format('woff');
 }
 
+/* FORMS */
+input[type=text], input[type=url], input[type=email], input[type=password], input[type=tel] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  margin: 0.4em 0;
+  padding-left: 0.6em;
+  width: 60%;
+  height: 1.6em;
+  line-height: 1.6em;
+  font-size: 1em;
+  font: inherit;
+}
+
 input.sinatra-pink {
   font: inherit;
   font-size: 0.8em;
@@ -195,10 +209,10 @@ body {
 }
 
 .ebb_tide {
+  margin-top: 0.8em;
   width: 49.15254%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
+  float: left;
+  margin-right: 1.69492%;
   display: inline;
   text-align: center;
   color: #295448;

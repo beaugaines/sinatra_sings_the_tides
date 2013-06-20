@@ -13,6 +13,21 @@
     padding: $padd
 
 
+/* FORMS */
+
+input[type=text],input[type=url],input[type=email],input[type=password],input[type=tel]
+  -webkit-appearance: none
+  -moz-appearance: none
+  display: block
+  margin: 0.4em 0
+  padding-left: 0.6em
+  width: 60%
+  height: 1.6em
+  line-height: 1.6em
+  font-size: 1em
+  font: inherit
+  // border: 1px solid $sinatra-scarlet
+
 input.sinatra-pink
   font: inherit
   font-size: 0.8em
@@ -109,7 +124,8 @@ body
         padding-left: 1.8em
 
 .ebb_tide
-  @include span-columns(6 omega, 12)
+  margin-top: 0.8em
+  @include span-columns(6, 12)
   text-align: center
   color: $sinatra-dark-green
 
