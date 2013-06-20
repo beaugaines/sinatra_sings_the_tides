@@ -10,6 +10,7 @@ gem 'haml'
 gem 'susy'
 gem 'compass'
 gem 'coffee-script'
+gem 'sassy-buttons'
 
 # utilities
 gem 'rake'

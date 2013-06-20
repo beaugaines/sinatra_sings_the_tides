@@ -2,10 +2,22 @@
 
 %p
   Next high at
-  = @tide_1
+  = @tide1
 %p
   Next one after that
-  = @tide_2
+  = @tide2
 %p
   And the next, tomorrow at
-  = @tide_3
+  = @tide3
+
+ .secondary
+  .buy_links
+    .caption
+      %p
+        Going to the beach?  You just might like
+        %a{:href => "javascript:void(null)", :id => 'rollup'} some of these items
+    #content
+      %ul.burger_bullet 
+        %li
+          %a{:href => "http://www.decktowel.com/collections/frontpage/products/boudewijn"} Deck towel!
+          = image_tag "images/deck_towel.jpg", :alt => 'Deck towel'
