@@ -122,7 +122,10 @@ body
   #ads
     @include span-columns(10, 12)
     #content
-      display: none
+      @include span-columns(2,10)
+      background: inherit
+      padding: 1em
+      // display: none
       li a
         padding-left: 1.8em
 

@@ -26,19 +26,12 @@ $ ->
     $('html, body').stop().animate({
       scrollTop: $($anchor.attr('href')).offset().top
     }, 1500, 'easeInOutExpo')
-    event.preventDefault()
+    e.preventDefault()
+    
+# $ ->    
+#   $('callout a').clickscrollTo('#post-5',{duration:'slow', offsetTop : '50'});
 
 
-# masronry
-
-$ ->
-  $container = $('#ads')
-  $container.imagesLoaded( ->
-    $container.masonry({
-      itemSelector: '#content'
-      })
-  )
- 
 # geolocate fcn
 $ ->
   getLocation = ->

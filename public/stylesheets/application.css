@@ -205,7 +205,12 @@ body {
   display: inline;
 }
 .secondary #ads #content {
-  display: none;
+  width: 18.36735%;
+  float: left;
+  margin-right: 2.04082%;
+  display: inline;
+  background: inherit;
+  padding: 1em;
 }
 .secondary #ads #content li a {
   padding-left: 1.8em;

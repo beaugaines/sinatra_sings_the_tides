@@ -3,7 +3,7 @@
     %p No results for that location.
   - else
     .callout
-      %a{:href => '#buy_links'} A word from our sponsor...
+      %a{:href => '#sponsors'} A word from our sponsor...
     %p Last high tide:
     .last_high
       = @last_high
@@ -17,15 +17,22 @@
 
 = link_to 'Search again', '/'
 .secondary
-  #ads
-    .caption
-      %p
-        Going to the beach?  You just might like
-        %a{:href => "javascript:void(null)", :id => 'rollup'} some of these items
-    #content
-      %ul.burger_bullet 
-        %li
-          %a{:href => "http://www.decktowel.com/collections/frontpage/products/boudewijn"} Deck towel!
-          = image_tag "images/deck_towel.jpg", :alt => 'Deck towel'
-    #content
-      <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_3ff8c843-d95e-410a-b252-ba6628f2e763"  WIDTH="250px" HEIGHT="250px"> <PARAM NAME="movie" VALUE="http://ws.amazon.com/widgets/q?rt=tf_w_mpw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbookcities-20%2F8014%2F3ff8c843-d95e-410a-b252-ba6628f2e763&Operation=GetDisplayTemplate"><PARAM NAME="quality" VALUE="high"><PARAM NAME="bgcolor" VALUE="#FFFFFF"><PARAM NAME="allowscriptaccess" VALUE="always"><embed src="http://ws.amazon.com/widgets/q?rt=tf_w_mpw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbookcities-20%2F8014%2F3ff8c843-d95e-410a-b252-ba6628f2e763&Operation=GetDisplayTemplate" id="Player_3ff8c843-d95e-410a-b252-ba6628f2e763" quality="high" bgcolor="#ffffff" name="Player_3ff8c843-d95e-410a-b252-ba6628f2e763" allowscriptaccess="always"  type="application/x-shockwave-flash" align="middle" height="250px" width="250px"></embed></OBJECT> <NOSCRIPT><A HREF="http://ws.amazon.com/widgets/q?rt=tf_w_mpw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbookcities-20%2F8014%2F3ff8c843-d95e-410a-b252-ba6628f2e763&Operation=NoScript">Amazon.com Widgets</A></NOSCRIPT>
+  #sponsors.js-masonry{'data-masonry-options' => "{ \"columnWidth\": 200, \"itemSelector\": \"#content\"}"}
+    / .caption
+    /   %p
+    /     Going to the beach?  You just might like
+    /     %a{:href => "javascript:void(null)", :id => 'rollup'} some of these items
+    / #content
+    /   %ul.burger_bullet 
+    /     %li
+    /       %a{:href => "http://www.decktowel.com/collections/frontpage/products/boudewijn"} Deck towel!
+    /       = image_tag "images/deck_towel.jpg", :alt => 'Deck towel'
+    #ads
+      #content
+        <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab" id="Player_3ff8c843-d95e-410a-b252-ba6628f2e763"  WIDTH="250px" HEIGHT="250px"> <PARAM NAME="movie" VALUE="http://ws.amazon.com/widgets/q?rt=tf_w_mpw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbookcities-20%2F8014%2F3ff8c843-d95e-410a-b252-ba6628f2e763&Operation=GetDisplayTemplate"><PARAM NAME="quality" VALUE="high"><PARAM NAME="bgcolor" VALUE="#4599DA"><PARAM NAME="allowscriptaccess" VALUE="always"><embed src="http://ws.amazon.com/widgets/q?rt=tf_w_mpw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbookcities-20%2F8014%2F3ff8c843-d95e-410a-b252-ba6628f2e763&Operation=GetDisplayTemplate" id="Player_3ff8c843-d95e-410a-b252-ba6628f2e763" quality="high" bgcolor="#4599DA" name="Player_3ff8c843-d95e-410a-b252-ba6628f2e763" allowscriptaccess="always"  type="application/x-shockwave-flash" align="middle" height="250px" width="250px"></embed></OBJECT> <NOSCRIPT><A HREF="http://ws.amazon.com/widgets/q?rt=tf_w_mpw&ServiceVersion=20070822&MarketPlace=US&ID=V20070822%2FUS%2Fbookcities-20%2F8014%2F3ff8c843-d95e-410a-b252-ba6628f2e763&Operation=NoScript">Amazon.com Widgets</A></NOSCRIPT>
+
+
+/ amazon omakase!
+<script type="text/javascript"><!--
+amazon_ad_tag = "bookcities-20"; amazon_ad_width = "600"; amazon_ad_height = "520"; amazon_ad_border = "hide"; amazon_color_border = "782E04"; amazon_color_background = "F0F0F0"; amazon_color_text = "782E04"; amazon_color_link = "4F7D97"; amazon_color_price = "B43222"; amazon_color_logo = "782E04";//--></script>
+<script type="text/javascript" src="http://www.assoc-amazon.com/s/ads.js"></script>

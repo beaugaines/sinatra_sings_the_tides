@@ -116,7 +116,7 @@ post '/tides' do
   tides_list = []
   # get state and city from params
   city = params[:city]
-  state = params[:state]
+  state = params[:state].upcase
   # check format of city and state
   if city.split.length > 1
     city = city.split.join('_')
