@@ -4,6 +4,7 @@ require 'sinatra/static_assets'
 require 'wunderground'
 require 'haml'
 require 'susy'
+require 'pry'
 
 
 # monkey patch Time
@@ -38,7 +39,6 @@ wunderground_key = ENV['WUNDERGROUND_KEY']
 
 # helpers
 require './lib/render_partial'
-require './lib/states_hash'
 
 # sinatra vars
 set :app_file, __FILE__
@@ -100,14 +100,6 @@ def distance_of_time_in_words(minutes)
  end
 end
 
-# various
-after do
-  # redis!
-end
-
-not_found do
-  'Ugh.  Nothin here. Sorry about that.'
-end
 
 # routes
 get '/' do
@@ -120,18 +112,20 @@ def format_time time
 end
 
 post '/tides' do
+  # initialize collection object
   tides_list = []
-  begin
-    city = params[:city]
-    state = params[:state]
-    # fetch tides object
-    next_highs = fetch_tides(state, city)
-  rescue
-    state = state_hash[state]
-    puts state
-    binding.pry
-    next_highs = fetch_tides(state, city)
+  # get state and city from params
+  city = params[:city]
+  state = params[:state]
+  # check format of city and state
+  if city.split.length > 1
+    city = city.split.join('_')
   end
+  if state.length > 2
+    state = state_hash[state]
+  end
+  # fetch tides object
+  next_highs = fetch_tides(state, city)
   begin
     # calculate last high tide
     last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
@@ -159,4 +153,12 @@ post '/tides' do
     next
   end
   haml :tides, :layout => true
+end
+
+after do
+  # redis!
+end
+
+not_found do
+  'Ugh.  Nothin here. Sorry about that.'
 end

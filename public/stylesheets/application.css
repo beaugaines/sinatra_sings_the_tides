@@ -170,8 +170,8 @@ body {
   margin-top: 0.5em;
   padding-bottom: 0.2em;
 }
-.tides .low_tide {
-  background: #f46692;
+.tides .last_high {
+  background: #fedc4e;
   text-align: center;
   padding: 0.3em 0;
 }

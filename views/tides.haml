@@ -1,16 +1,15 @@
-- if @last_high.nil? or @tide1.nil? or @tide2.nil
-  #results
-    %h2 No results for that location
--else
-  #results
-    %h1 Here are your tides:
-
-    %p.low_tide= "Last high was #{@last_high}"
-    %p.high_tide
-      Next high tide:
+.tides
+  - if @last_high.nil? or @tide1.nil? or @tide2.nil?
+    %p No results for that location.
+  - else
+    %p Last high tide:
+    .last_high
+      = @last_high
+    %p Next high tide:
+    .high_tide
       = @tide1
-    %p.tomorrow_tide
-      And the next one
+    %p And the next one
+    .tomorrow_tide
       = @tide2
 
 

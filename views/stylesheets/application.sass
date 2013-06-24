@@ -93,12 +93,12 @@ body
   background-size: contain
 
 .tides
+  @include span-columns(6 omega, 12)
   p
     margin-top: 0.5em
     padding-bottom: 0.2em
-  @include span-columns(6 omega, 12)
-  .low_tide
-    background: $sinatra-pink
+  .last_high
+    background: $sinatra-light-yellow
     text-align: center
     padding: 0.3em 0
   .high_tide
