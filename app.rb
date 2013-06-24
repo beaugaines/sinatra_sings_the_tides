@@ -4,7 +4,6 @@ require 'sinatra/static_assets'
 require 'wunderground'
 require 'haml'
 require 'susy'
-require 'sassy-buttons'
 
 
 # monkey patch Time
@@ -103,15 +102,18 @@ get '/' do
 end
 
 
+
 post '/tides' do
   upcoming_tides = []
   city = params[:city]
   state = params[:state]
+  # fetch tides object
   next_highs = fetch_tides(state, city)
-  if next_highs.first > Time.now
-    last_high = next_highs.first - 12*60*60
-    @last_high = last_high.strftime('%I:%M')
+  # calculate last high tide
+  last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
+    @last_high = timeago(last_high)
     upcoming_tides << @last_high
+  end
   next_highs.each do |item|
     time, meridian =  item['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
     if meridian == 'PM'

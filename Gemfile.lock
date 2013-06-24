@@ -16,7 +16,6 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fssm (0.2.10)
-    fuzzy_time (1.1)
     geocoder (1.1.8)
     haml (4.0.3)
       tilt
@@ -33,7 +32,8 @@ GEM
       rack (>= 1.0)
     rake (10.0.4)
     sass (3.2.9)
-    sassy-buttons (0.2)
+    shotgun (0.9)
+      rack (>= 1.0)
     sinatra (1.4.3)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -62,11 +62,10 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   compass
-  fuzzy_time
   geocoder
   haml
   rake
-  sassy-buttons
+  shotgun
   sinatra
   sinatra-contrib
   sinatra-static-assets
