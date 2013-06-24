@@ -40,26 +40,61 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
-
-
 before do
-    # new wunderground object
-    @w_api ||= Wunderground.new("7d43f996448b0cfa")
-    # get request ip - hardcoded for now
-    # loc = Geocoder.search(request.ip)
-    # @loc = Geocoder.search("64.148.1.83")
-    # parse lat and long
-    # # lat, long = @loc[0].latitude, @loc[0].longitude
-    # # retrieve tides object
-    # tides = @w_api.tide_for("#{lat},#{long}")
-    # get low tide
-    # @low_tide_time = tides['tide']['tideSummary'][1]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-    # @high_tide_time = tides['tide']['tideSummary'][3]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-    # @high_tide_tomorrow = tides['tide']['tideSummary'][7]['date']['pretty'].slice(/\d+:\d+\s\w{2}/)
-    # @low_tide_time = Time.at(tides['tide']['tideSummary'][0]['date']['epoch'].to_i).fuzzy
-    # @low_tide_time = Time.at(tides['tide']['tideSummary'][3]['date']['epoch'].to_i).fuzzy
-    # @high_tide_tomorrow = Time.at(tides['tide']['tideSummary'][7]['date']['epoch'].to_i).fuzzy
+  # new wunderground object
+  @w_api ||= Wunderground.new("7d43f996448b0cfa")
+end
 
+
+# util fcns
+
+def fetch_tides(state, city)
+  tides = @w_api.tide_for(state, city)
+  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..2]
+end
+
+def timeago(time, options = {})
+ start_date = options.delete(:start_date) || Time.new
+ date_format = options.delete(:date_format) || :default
+ delta_minutes = (start_date.to_i - time.to_i).floor / 60
+ if delta_minutes.abs <= (8724*60)       
+   distance = distance_of_time_in_words(delta_minutes)       
+   if delta_minutes < 0
+      return "#{distance} from now"
+   else
+      return "#{distance} ago"
+   end
+ else
+    return "on #{DateTime.now.to_formatted_s(date_format)}"
+ end
+end
+
+def distance_of_time_in_words(minutes)
+ case
+   when minutes < 1
+     "less than a minute"
+   when minutes < 50
+     pluralize(minutes, "minute")
+   when minutes < 90
+     "about one hour"
+   when minutes < 1080
+     "#{(minutes / 60).round} hours"
+   when minutes < 1440
+     "one day"
+   when minutes < 2880
+     "about one day"
+   else
+     "#{(minutes / 1440).round} days"
+ end
+end
+
+# various
+after do
+  # redis!
+end
+
+not_found do
+  'Ugh.  Nothin here. Sorry about that.'
 end
 
 # routes
@@ -67,10 +102,6 @@ get '/' do
   haml :index
 end
 
-def fetch_tides(state, city)
-  tides = @w_api.tide_for(state, city)
-  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..2]
-end
 
 post '/tides' do
   upcoming_tides = []
@@ -96,6 +127,3 @@ post '/tides' do
   @last_tide = @tide1 - tide_differential*60*60
   haml :tides, :layout => true
 end
-  
-
-
