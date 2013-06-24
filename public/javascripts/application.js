@@ -32,6 +32,17 @@
   });
 
   $(function() {
+    var $container;
+
+    $container = $('#ads');
+    return $container.imagesLoaded(function() {
+      return $container.masonry({
+        itemSelector: '#content'
+      });
+    });
+  });
+
+  $(function() {
     var displayError, getLocation, showPosition;
 
     getLocation = function() {
@@ -64,14 +75,6 @@
       };
       return alert('Error: ' + errors[error.code]);
     };
-  });
-
-  $(function() {
-    $('#content').hide();
-    $('#rollup').show();
-    return $('#rollup').click(function() {
-      return $('#content').slideToggle();
-    });
   });
 
 }).call(this);

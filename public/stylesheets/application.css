@@ -90,6 +90,9 @@ input.sinatra-pink {
   box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px #ff00d9;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
+input.sinatra-pink:hover {
+  opacity: 0.7;
+}
 
 /* BASE */
 html {
@@ -195,16 +198,16 @@ body {
   list-style-type: none;
 }
 
-.secondary .buy_links {
-  width: 49.15254%;
+.secondary #ads {
+  width: 83.05085%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-.secondary .buy_links #content {
+.secondary #ads #content {
   display: none;
 }
-.secondary .buy_links #content li a {
+.secondary #ads #content li a {
   padding-left: 1.8em;
 }
 

@@ -1,9 +1,4 @@
-# $('#rollup').click ->
-#   body = this.closest('div.buy_links').find('div.content')
-#   if(body.is(:hidden))
-#     body.show()
-#   else
-#     body.hide()
+
 
 # ajax form submit
 
@@ -33,6 +28,16 @@ $ ->
     }, 1500, 'easeInOutExpo')
     event.preventDefault()
 
+
+# masronry
+
+$ ->
+  $container = $('#ads')
+  $container.imagesLoaded( ->
+    $container.masonry({
+      itemSelector: '#content'
+      })
+  )
  
 # geolocate fcn
 $ ->
@@ -57,11 +62,11 @@ $ ->
 
     
 
-$ ->
-  $('#content').hide()
-  $('#rollup').show()
-  $('#rollup').click ->
-    $('#content').slideToggle()
+# $ ->
+#   $('#content').hide()
+#   $('#rollup').show()
+#   $('#rollup').click ->
+#     $('#content').slideToggle()
 
    
 
