@@ -1,16 +1,20 @@
-#results
-  %h1 Here are your tides:
+- if @last_high.nil? or @tide1.nil? or @tide2.nil
+  #results
+    %h2 No results for that location
+-else
+  #results
+    %h1 Here are your tides:
 
-  %p.low_tide
-    Next high at
-    = @tide1
-  %p.high_tide
-    Next one after that
-    = @tide2
-  %p.tomorrow_tide
-    And the next, tomorrow at
-    = @tide3
+    %p.low_tide= "Last high was #{@last_high}"
+    %p.high_tide
+      Next high tide:
+      = @tide1
+    %p.tomorrow_tide
+      And the next one
+      = @tide2
 
+
+= link_to 'Search again', '/'
 .secondary
   .buy_links
     .caption

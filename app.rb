@@ -21,11 +21,24 @@ class Time
   end
 end
 
+state_hash = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samoa"=>"AS",
+ "Arizona"=>"AZ", "California"=>"CA", "Colorado"=>"CO", "Connecticut"=>"CT",
+ "District of Columbia"=>"DC", "Delaware"=>"DE", "Florida"=>"FL", "Georgia"=>"GA",
+ "Guam"=>"GU", "Hawaii"=>"HI", "Iowa"=>"IA", "Idaho"=>"ID", "Illinois"=>"IL", "Indiana"=>"IN",
+ "Kansas"=>"KS", "Kentucky"=>"KY", "Louisiana"=>"LA", "Massachusetts"=>"MA", "Maryland"=>"MD",
+ "Maine"=>"ME", "Michigan"=>"MI", "Minnesota"=>"MN", "Missouri"=>"MO", "Mississippi"=>"MS",
+ "Montana"=>"MT", "North Carolina"=>"NC", "North Dakota"=>"ND", "Nebraska"=>"NE", "New Hampshire"=>"NH",
+ "New Jersey"=>"NJ", "New Mexico"=>"NM", "Nevada"=>"NV", "New York"=>"NY", "Ohio"=>"OH", "Oklahoma"=>"OK",
+ "Oregon"=>"OR", "Pennsylvania"=>"PA", "Puerto Rico"=>"PR", "Rhode Island"=>"RI", "South Carolina"=>"SC",
+ "South Dakota"=>"SD", "Tennessee"=>"TN", "Texas"=>"TX", "Utah"=>"UT", "Virginia"=>"VA", "Virgin Islands"=>"VI",
+ "Vermont"=>"VT", "Washington"=>"WA", "Wisconsin"=>"WI", "West Virginia"=>"WV", "Wyoming"=>"WY" }
+
 # access Wundround key
 wunderground_key = ENV['WUNDERGROUND_KEY']
 
 # helpers
 require './lib/render_partial'
+require './lib/states_hash'
 
 # sinatra vars
 set :app_file, __FILE__
@@ -102,30 +115,48 @@ get '/' do
 end
 
 
+def format_time time
+  time.strftime('%I:%m')
+end
 
 post '/tides' do
-  upcoming_tides = []
-  city = params[:city]
-  state = params[:state]
-  # fetch tides object
-  next_highs = fetch_tides(state, city)
-  # calculate last high tide
-  last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
-    @last_high = timeago(last_high)
-    upcoming_tides << @last_high
+  tides_list = []
+  begin
+    city = params[:city]
+    state = params[:state]
+    # fetch tides object
+    next_highs = fetch_tides(state, city)
+  rescue
+    state = state_hash[state]
+    puts state
+    binding.pry
+    next_highs = fetch_tides(state, city)
   end
-  next_highs.each do |item|
-    time, meridian =  item['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
-    if meridian == 'PM'
-      upcoming_tides << "#{time} in the PM"
-    else
-      upcoming_tides << "#{time} in the AM"
+  begin
+    # calculate last high tide
+    last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
+      @last_high = timeago(last_high)
+      tides_list << @last_high
+    next_highs.each do |item|
+      # time, meridian =  item['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
+      time = Time.at(item['date']['epoch'].to_i)
+      if time.pm?
+        formatted_time = format_time(time)
+        formatted_time = "#{formatted_time} in the PM"
+      else
+        formatted_time = format_time(time)
+        formatted_time = "#{formatted_time} in the AM"
+      end
+      if time.day > Time.now.day
+        formatted_time << ' tomorrow'
+      end
+      tides_list << formatted_time
     end
+    @last_high = tides_list[0]
+    @tide1 = tides_list[1]
+    @tide2 = tides_list[2]
+  rescue
+    next
   end
-  @last_high = upcoming_tides[0]
-  @tide1 = upcoming_tides[1]
-  @tide2 = upcoming_tides[2]
-  tide_differential = (@tide2 - @tide1).to_i/360
-  @last_tide = @tide1 - tide_differential*60*60
   haml :tides, :layout => true
 end
