@@ -2,6 +2,8 @@
   - if @last_high.nil? or @tide1.nil? or @tide2.nil?
     %p No results for that location.
   - else
+    .callout
+      %a{:href => '#buy_links'} A word from our sponsor...
     %p Last high tide:
     .last_high
       = @last_high
@@ -15,7 +17,7 @@
 
 = link_to 'Search again', '/'
 .secondary
-  .buy_links
+  #buy_links
     .caption
       %p
         Going to the beach?  You just might like

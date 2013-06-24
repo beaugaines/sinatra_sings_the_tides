@@ -20,6 +20,18 @@
   });
 
   $(function() {
+    return $('callout a').click(function(e) {
+      var $anchor;
+
+      $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top
+      }, 1500, 'easeInOutExpo');
+      return event.preventDefault();
+    });
+  });
+
+  $(function() {
     var displayError, getLocation, showPosition;
 
     getLocation = function() {
