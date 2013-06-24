@@ -4,16 +4,15 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-static-assets'
+gem 'shotgun'
 
 # styles
 gem 'haml'
 gem 'susy'
 gem 'compass'
 gem 'coffee-script'
-gem 'sassy-buttons'
 
 # utilities
 gem 'rake'
 gem 'geocoder'
 gem 'wunderground'
-gem 'fuzzy_time'
