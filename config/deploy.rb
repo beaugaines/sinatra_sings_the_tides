@@ -41,7 +41,6 @@ after "deploy", "deploy:cleanup"
 
 # Where will it be located on a server?
 set :deploy_to, "/var/www/#{application}"
-set :deploy_via, :copy
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
