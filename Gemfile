@@ -22,4 +22,4 @@ gem 'pry'
 gem 'thin'
 gem 'vlad', :require => false
 gem 'vlad-git', :require => false
-gem 'vlad-thin', :require => false
+gem 'vlad-unicorn', :require => false
