@@ -10,5 +10,6 @@ set :unicorn_pid, "#{deploy_to}/shared/log/unicorn.pid"
 set :unicorn_command, "cd #{deploy_to}/current && RACK_ENV=production bundle exec unicorn"
 
 # set up ssh
-set :user, 'me'
 set :domain, "#{user}@97.107.133.190"
+set :revision, 'HEAD'
+set :ssh_flags, '-l me'
