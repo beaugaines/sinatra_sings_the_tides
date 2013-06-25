@@ -4,8 +4,7 @@ require 'sinatra/static_assets'
 require 'wunderground'
 require 'haml'
 require 'susy'
-require 'pry'
-
+require 'unicorn'
 
 # monkey patch Time
 class Time
