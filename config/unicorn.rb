@@ -1,5 +1,5 @@
 # define paths and filenames
-deploy_to = "/var/www/sinara_sings_the_tides"
+deploy_to = "/var/www/sinatra_sings_the_tides"
 rack_root = "#{deploy_to}/current"
 pid_file = "#{deploy_to}/shared/pids/unicorn.pid"
 socket_file= "#{deploy_to}/shared/unicorn.sock"
