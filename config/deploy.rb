@@ -40,6 +40,7 @@ set :ssh_options, { :forward_agent => true }
 after "deploy", "deploy:cleanup" 
 
 # Where will it be located on a server?
+set :deploy_via, :remote_cache
 set :deploy_to, "/var/www/#{application}"
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
