@@ -13,7 +13,6 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    daemons (1.1.9)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -25,6 +24,7 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     json (1.8.0)
+    kgio (2.8.0)
     method_source (0.8.1)
     multi_json (1.7.6)
     multi_xml (0.5.4)
@@ -38,6 +38,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.11.0)
     rake (10.0.4)
     rake-remote_task (2.2.1)
       open4 (~> 1.0)
@@ -62,17 +63,18 @@ GEM
     susy (1.0.8)
       compass (>= 0.12.2)
       sass (>= 3.2.0)
-    thin (1.5.1)
-      daemons (>= 1.0.9)
-      eventmachine (>= 0.12.6)
-      rack (>= 1.0.0)
     tilt (1.4.1)
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     vlad (2.5.1)
       rake (>= 0.8, < 11.0)
       rake-remote_task (~> 2.1)
     vlad-git (2.2.0)
       vlad (>= 2.1.0)
-    vlad-thin (1.2.0)
+    vlad-unicorn (2.3.1)
+      vlad (~> 2.0)
     wunderground (1.1.0)
       addressable
       httparty (> 0.6.0)
@@ -93,8 +95,8 @@ DEPENDENCIES
   sinatra-contrib
   sinatra-static-assets
   susy
-  thin
+  unicorn
   vlad
   vlad-git
-  vlad-thin
+  vlad-unicorn
   wunderground

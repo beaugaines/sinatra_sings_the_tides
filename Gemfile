@@ -19,7 +19,7 @@ gem 'wunderground'
 gem 'pry'
 
 # deploy
-gem 'thin'
+gem 'unicorn'
 gem 'vlad', :require => false
 gem 'vlad-git', :require => false
 gem 'vlad-unicorn', :require => false
