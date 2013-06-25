@@ -17,3 +17,6 @@ gem 'rake'
 gem 'geocoder'
 gem 'wunderground'
 gem 'pry'
+
+# deploy
+gem 'capistrano'
