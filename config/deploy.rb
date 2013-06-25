@@ -5,7 +5,7 @@ require 'bundler/capistrano'
 
 set :application, "sinatra_sings_the_tides"
 set :repository,  "git@github.com:beaugaines/#{application}.git"
-server "97.107.133.190", :web, :app, :db, primary: true
+server "97.107.133.190", :web, :app, primary: true
 
 set :scm, :git
 set :branch, 'master'
@@ -27,7 +27,7 @@ set :group, 'deployers'
 set :runner, user
 
 set :host, "#{user}@97.107.133.190" # We need to be able to SSH to that box as this user.
-role :web, host
+# role :web, host
 role :app, host
 
 # rack config
