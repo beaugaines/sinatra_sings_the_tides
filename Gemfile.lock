@@ -17,7 +17,6 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fssm (0.2.10)
-    geocoder (1.1.8)
     haml (4.0.3)
       tilt
     httparty (0.11.0)
@@ -86,7 +85,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-script
   compass
-  geocoder
   haml
   pry
   rake
