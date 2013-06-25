@@ -23,7 +23,7 @@ set(:run_method) { use_sudo ? :sudo : :run }
 default_run_options[:pty] = true
 
 set :user, "me"
-set :group, 'deployers'
+set :group, 'web'
 set :runner, user
 
 set :host, "#{user}@97.107.133.190" # We need to be able to SSH to that box as this user.
