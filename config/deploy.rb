@@ -1,6 +1,6 @@
 set :application, 'SinatraSingsTheTides'
 set :domain, 'http://97.107.133.190'
-set :deploy_to, '/home/apps/sinatra_sings_the_tides'
+set :deploy_to, '/home/me/apps/sinatra_sings_the_tides'
 set :repository, 'git@github.com:beaugaines/sinatra_sings_the_tides.git'
 
 # thin pid
