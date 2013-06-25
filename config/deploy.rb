@@ -31,7 +31,7 @@ role :web, host
 role :app, host
 
 # bundler/rbenv config
-set :bundle_flags, "-deployment --binstubs"
+set :bundle_flags, "--deployment --binstubs"
 set :default_environment, {
   'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 }
