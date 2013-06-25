@@ -1,5 +1,4 @@
 set :application, 'SinatraSingsTheTides'
-set :domain, 'http://97.107.133.190'
 set :deploy_to, '/home/me/apps/sinatra_sings_the_tides'
 set :repository, 'git@github.com:beaugaines/sinatra_sings_the_tides.git'
 
@@ -12,4 +11,4 @@ set :unicorn_command, "cd #{deploy_to}/current && RACK_ENV=production bundle exe
 # set up ssh
 set :user, 'me'
 set :domain, "#{user}@97.107.133.190"
-set :revision, 'HEAD'
+set :revision, 'origin/master'
