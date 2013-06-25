@@ -30,6 +30,12 @@ set :host, "#{user}@97.107.133.190" # We need to be able to SSH to that box as t
 role :web, host
 role :app, host
 
+# bundler/rbenv config
+set :bundle_flags, "-deployment --binstubs"
+set :default_environment, {
+  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
+}
+
 # rack config
 set :rack_env, :production
 
