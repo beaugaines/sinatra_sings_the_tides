@@ -69,6 +69,9 @@ GEM
       compass (>= 0.12.2)
       sass (>= 3.2.0)
     tilt (1.4.1)
+    uglifier (2.1.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
       kgio (~> 2.6)
       rack
@@ -86,10 +89,12 @@ DEPENDENCIES
   compass
   haml
   rake
+  sass
   sinatra
   sinatra-asset-pipeline
   sinatra-contrib
   sinatra-static-assets
   susy
+  uglifier
   unicorn
   wunderground
