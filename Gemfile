@@ -11,6 +11,8 @@ gem 'haml'
 gem 'susy'
 gem 'compass'
 gem 'coffee-script'
+gem 'uglifier'
+gem 'sass'
 
 # utilities
 gem 'rake'
