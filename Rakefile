@@ -1,15 +1,11 @@
 require 'rubygems'
 require 'bundler'
+require 'sinatra/asset_pipeline/task.rb'
+require './app'
 require 'rake'
 Bundler.setup
 
 Dir["tasks/*.rake"].sort.each { |ext| load ext }
 
-# deploy with vlad
-begin
-  require 'vlad'
-  Vlad.load :scm => :git, :app => :unicorn
-rescue LoadError
-  # do nothing
-end
+Sinatra::AssetPipeline::Task.define! App
 
