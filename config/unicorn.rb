@@ -1,28 +1,39 @@
-# define paths and filenames
-deploy_to = "/var/www/sinatra_sings_the_tides"
-rack_root = "#{deploy_to}/current"
-pid_file = "#{deploy_to}/shared/pids/unicorn.pid"
-socket_file= "#{deploy_to}/shared/unicorn.sock"
-log_file = "#{rack_root}/log/unicorn.log"
-err_log = "#{rack_root}/log/unicorn_error.log"
-old_pid = pid_file + '.oldbin'
- 
-timeout 30
+app = 'sinatra_sings_the_tides'
+root = "/var/www/#{app}"
+working_directory "#{root}/current"
+pid "#{root}/current/tmp/pids/unicorn.pid"
+stderr_path "#{root}/shared/log/unicorn.log"
+stdout_path "#{root}/shared/log/unicorn.log"
+
+listen "/tmp/unicorn.#{app}.sock"
 worker_processes 2
-listen socket_file, :backlog => 1024
- 
-pid pid_file
-stderr_path err_log
-stdout_path log_file
- 
+timeout 30
+
+preload_app true
+
 before_fork do |server, worker|
-  # zero downtime deploy magic:
-  # if unicorn is already running, ask it to start a new process and quit.
+  # Quit the old unicorn process
+  old_pid = "#{server.config[:pid]}.oldbin"
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
-      # already done
+      # someone else did our job for us
     end
   end
 end
+
+after_fork do |server, worker|
+  child_pid = server.config[:pid].sub(".pid", ".#{worker.nr}.pid")
+  system("echo #{Process.pid} > #{child_pid}")
+end
+
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = "#{root}/current/Gemfile"
+end
+
+# This seems to fix unicorn not refreshing the Gemfile issue
+# http://web.archiveorange.com/archive/v/X5NWS5tycCtKI5DJ23rR
+# http://unicorn.bogomips.org/Sandbox.html
+Unicorn::HttpServer::START_CTX[0] = "#{root}/shared/bundle/ruby/1.9.1/bin/unicorn"
+

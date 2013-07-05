@@ -1,69 +1,59 @@
-# config/deploy.rb
-
-# Bundler tasks
+require 'rubygems'
 require 'bundler/capistrano'
 
-set :application, "sinatra_sings_the_tides"
-set :repository,  "git@github.com:beaugaines/#{application}.git"
-server "97.107.133.190", :web, :app, primary: true
-
+set :user, 'me'
+set :application, 'sinatra_sings_the_tides'
+set :environment, 'production'
+set :deploy_to, "/var/www/#{application}"
+set :repository, 'git@github.com:beaugaines/sinatra_tides_2.git'
 set :scm, :git
-set :branch, 'master'
+set :use_sudo, false
+
+server '97.107.133.190', :web, :app, :db, primary: true
+
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
 
 # config for rbenv
 set :default_environment, {
   'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
 }
 
-# do not use sudo
-set :use_sudo, false
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
-# This is needed to correctly handle sudo password prompt
-default_run_options[:pty] = true
-
-set :user, "me"
-set :group, 'web'
-set :runner, user
-
-set :host, "#{user}@97.107.133.190" # We need to be able to SSH to that box as this user.
-role :web, host
-role :app, host
-
-# bundler/rbenv config
-set :bundle_flags, "--deployment --binstubs"
-set :default_environment, {
-  'PATH' => "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-}
-
-# rack config
-set :rack_env, :production
-
-# ssh options
-set :ssh_options, { :forward_agent => true }
-
-# keep 5 releases
-after "deploy", "deploy:cleanup" 
-
-# Where will it be located on a server?
-set :deploy_via, :remote_cache
-set :deploy_to, "/var/www/#{application}"
-set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
-
-set :public_children, ["stylesheets","images","javascripts"]
- 
-namespace :deploy do
- 
-  task :restart do
-    run "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{current_path} && bundle exec unicorn -c #{unicorn_conf} -E #{rack_env} -D; fi"
+namespace :unicorn do  
+  desc "Zero-downtime restart Unicorn"
+  task :restart, except: { no_release: true } do
+    if remote_file_exists?(unicorn_pid)
+      run "kill -s USR2 `cat #{unicorn_pid}`"
+    else
+      unicorn.start
+    end
   end
- 
-  task :start do
-    run "cd #{current_path} && bundle exec unicorn -c #{unicorn_conf} -E #{rack_env} -D"
+  
+  desc "Start Unicorn"
+  task :start, except: { no_release: true } do
+    if remote_file_exists?(unicorn_pid)
+      logger.important("Unicorn PIDs found. Check if unicorn is already running.", "Unicorn")
+    else
+      run "cd #{current_path} && bundle exec unicorn -c #{unicorn_config} -E #{environment} -D"
+    end
   end
- 
-  task :stop do
-    run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+  
+  desc "Gracefully stop Unicorn"
+  task :stop, except: { no_release: true } do
+    if remote_file_exists?(unicorn_pid)
+      run "kill -s QUIT `cat #{unicorn_pid}`"
+    else
+      logger.important("No PIDs found. Check if unicorn is running.", "Unicorn")
+    end
   end
- 
+end
+
+after "deploy:restart", "unicorn:restart"
+
+
+def remote_file_exists?(file_path)
+  'true' == capture("if [ -e #{file_path} ]; then echo 'true'; fi").strip
 end
