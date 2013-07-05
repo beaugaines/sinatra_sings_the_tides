@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-static-assets'
+gem 'sinatra-asset-pipeline'
 
 # styles
 gem 'haml'
