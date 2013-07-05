@@ -17,7 +17,6 @@ set :default_environment, {
 
 # do not use sudo
 set :use_sudo, false
-set(:run_method) { use_sudo ? :sudo : :run }
 
 # This is needed to correctly handle sudo password prompt
 default_run_options[:pty] = true
