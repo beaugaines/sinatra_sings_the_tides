@@ -39,13 +39,12 @@ wunderground_key = ENV['WUNDERGROUND_KEY']
 # helpers
 require './lib/render_partial'
 
-# sinatra vars
-set :app_file, __FILE__
-set :root, File.dirname(__FILE__)
-set :public_dir, 'public'
 
 
 configure do
+  set :app_file, __FILE__
+  set :root, File.dirname(__FILE__)
+  set :public_dir, 'public'
   set :haml, { :format => :html5 }
   set :sass, { :style => :compact, :debug_info => false }
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
