@@ -53,7 +53,7 @@ end
 
 before do
   # new wunderground object
-  @w_api ||= Wunderground.new("7d43f996448b0cfa")
+  @w_api ||= Wunderground.new(wunderground_key)
 end
 
 
