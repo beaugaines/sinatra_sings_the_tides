@@ -39,8 +39,6 @@ wunderground_key = ENV['WUNDERGROUND_KEY']
 # helpers
 require './lib/render_partial'
 
-
-
 configure do
   set :app_file, __FILE__
   set :root, File.dirname(__FILE__)
@@ -109,10 +107,7 @@ def format_time time
   time.strftime('%I:%m')
 end
 
-post '/tides' do
-  # initialize collection object
-  tides_list = []
-  # get state and city from params
+def format_search_params
   city = params[:city]
   state = params[:state].upcase
   # check format of city and state
@@ -122,6 +117,13 @@ post '/tides' do
   if state.length > 2
     state = state_hash[state]
   end
+end
+
+post '/tides' do
+  # initialize collection object
+  tides_list = []
+  # get state and city from params
+  format_search_params
   # fetch tides object
   next_highs = fetch_tides(state, city)
   begin
