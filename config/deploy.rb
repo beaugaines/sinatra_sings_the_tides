@@ -5,7 +5,7 @@ set :user, 'me'
 set :application, 'sinatra_sings_the_tides'
 set :environment, 'production'
 set :deploy_to, "/var/www/#{application}"
-set :repository, 'git@github.com:beaugaines/sinatra_tides_2.git'
+set :repository, 'git@github.com:beaugaines/sinatra_sings_the_tides.git'
 set :scm, :git
 set :use_sudo, false
 

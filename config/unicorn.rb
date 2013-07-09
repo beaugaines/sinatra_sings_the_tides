@@ -5,7 +5,7 @@ pid "#{root}/current/tmp/pids/unicorn.pid"
 stderr_path "#{root}/shared/log/unicorn.log"
 stdout_path "#{root}/shared/log/unicorn.log"
 
-listen "/tmp/unicorn.#{app}.sock"
+listen "#{root}/shared/unicorn.sock"
 worker_processes 2
 timeout 30
 
@@ -35,5 +35,5 @@ end
 # This seems to fix unicorn not refreshing the Gemfile issue
 # http://web.archiveorange.com/archive/v/X5NWS5tycCtKI5DJ23rR
 # http://unicorn.bogomips.org/Sandbox.html
-Unicorn::HttpServer::START_CTX[0] = "#{root}/shared/bundle/ruby/1.9.1/bin/unicorn"
+Unicorn::HttpServer::START_CTX[0] = "#{root}/shared/bundle/ruby/2.0.0/bin/unicorn"
 
