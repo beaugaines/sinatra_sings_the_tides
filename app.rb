@@ -128,18 +128,15 @@ post '/tides' do
   next_highs = fetch_tides(state, city)
   begin
     # calculate last high tide
-    last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
-      @last_high = timeago(last_high)
-      tides_list << @last_high
+    last_high = Time.at(next_highs.shift['date']['epoch'].to_i - 12*60*60)
+      tides_list << timeago(last_high) 
     next_highs.each do |item|
       # time, meridian =  item['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
       time = Time.at(item['date']['epoch'].to_i)
       if time.pm?
-        formatted_time = format_time(time)
-        formatted_time = "#{formatted_time} in the PM"
+        formatted_time = "#{format_time(time)} in the PM"
       else
-        formatted_time = format_time(time)
-        formatted_time = "#{formatted_time} in the AM"
+        formatted_time = "#{format_time(time)} in the AM"
       end
       if time.day > Time.now.day
         formatted_time << ' tomorrow'
