@@ -49,9 +49,6 @@ configure do
   set :haml, { :format => :html5 }
   set :sass, { :style => :compact, :debug_info => false }
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
-  logfile = File.new("#{settings.root}/log/#{settings.environment}.log", 'a+')
-  logfile.sync = true
-  use Rack::CommonLogger, logfile
 end
 
 before do
