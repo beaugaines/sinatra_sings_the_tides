@@ -1,5 +1,5 @@
 .tides
-  - if @last_high.nil? or @tide1.nil? or @tide2.nil?
+  - if [@last_high, @tide1, @tide2].any? { |t| t.nil? }
     %p No results for that location.
   - else
     .callout
