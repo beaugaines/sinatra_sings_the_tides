@@ -34,6 +34,9 @@ state_hash = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samo
  "Vermont"=>"VT", "Washington"=>"WA", "Wisconsin"=>"WI", "West Virginia"=>"WV", "Wyoming"=>"WY" }
 
 
+
+
+
 # helpers
 require './lib/render_partial'
 
@@ -49,7 +52,7 @@ end
 
 before do
   # new wunderground object
-  @w_api ||= Wunderground.new(settings.wunderground_key)
+  @w_api ||= Wunderground.new(settings.wunderground_key.to_s)
 end
 
 
