@@ -105,7 +105,7 @@ def fetch_tides(state, city)
 end
 
 def format_time time
-  time.strftime('%I:%m')
+  time.strftime('%l:%M')
 end
 
 def format_search_params
@@ -148,6 +148,7 @@ post '/tides' do
     @last_high = tides_list[0]
     @tide1 = tides_list[1]
     @tide2 = tides_list[2]
+    binding.pry
   rescue
     next
   end
