@@ -52,7 +52,7 @@ end
 
 before do
   # new wunderground object
-  @w_api ||= Wunderground.new(settings.wunderground_key.to_s)
+  @w_api = Wunderground.new(settings.wunderground_key)
 end
 
 
