@@ -100,6 +100,9 @@ get '/' do
   haml :index
 end
 
+get '/about' do
+  haml :about
+end
 
 def fetch_tides(state, city)
   tides = @w_api.tide_for(state, city)

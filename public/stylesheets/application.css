@@ -157,7 +157,7 @@ body {
   float: left;
   margin-right: 1.69492%;
   display: inline;
-  background: url('/images/frank.png?1371141551') no-repeat;
+  background: url('/images/frank.png?1373047739') no-repeat;
   height: 500px;
   background-size: contain;
 }
@@ -194,7 +194,7 @@ body {
 }
 .burger_bullet li {
   padding-left: 5px;
-  background: url('/images/shooting_star_small.png?1371181292') no-repeat -10px 0px;
+  background: url('/images/shooting_star_small.png?1373047739') no-repeat -10px 0px;
   list-style-type: none;
 }
 
@@ -230,6 +230,15 @@ body {
 .search_again {
   margin-top: 1.5em;
   font-size: 1.5em !important;
+}
+
+/* ABOUT */
+.about {
+  width: 49.15254%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
 }
 
 /* FOOTER */
