@@ -52,7 +52,7 @@ end
 
 before do
   # new wunderground object
-  @w_api = Wunderground.new(settings.wunderground_key)
+  @w_api = Wunderground.new('7d43f996448b0cfa')
 end
 
 
