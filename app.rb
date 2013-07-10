@@ -148,7 +148,6 @@ post '/tides' do
     @last_high = tides_list[0]
     @tide1 = tides_list[1]
     @tide2 = tides_list[2]
-    binding.pry
   rescue
     next
   end
