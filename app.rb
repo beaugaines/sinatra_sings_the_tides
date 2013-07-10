@@ -56,10 +56,6 @@ end
 
 # util fcns
 
-def fetch_tides(state, city)
-  tides = @w_api.tide_for(state, city)
-  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..2]
-end
 
 def timeago(time, options = {})
  start_date = options.delete(:start_date) || Time.new
@@ -103,6 +99,11 @@ get '/' do
 end
 
 
+def fetch_tides(state, city)
+  tides = @w_api.tide_for(state, city)
+  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..1]
+end
+
 def format_time time
   time.strftime('%I:%m')
 end
@@ -117,18 +118,19 @@ def format_search_params
   if state.length > 2
     state = state_hash[state]
   end
+  [city, state]
 end
 
 post '/tides' do
   # initialize collection object
   tides_list = []
   # get state and city from params
-  format_search_params
+  city, state = format_search_params
   # fetch tides object
   next_highs = fetch_tides(state, city)
   begin
     # calculate last high tide
-    last_high = Time.at(next_highs.shift['date']['epoch'].to_i - 12*60*60)
+    last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
       tides_list << timeago(last_high) 
     next_highs.each do |item|
       # time, meridian =  item['date']['pretty'].slice(/\d+:\d+\s\w{2}/).split
