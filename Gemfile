@@ -15,6 +15,7 @@ gem 'coffee-script'
 # utilities
 gem 'rake'
 gem 'wunderground'
+gem 'pony'
 
 # deploy
 gem 'unicorn'

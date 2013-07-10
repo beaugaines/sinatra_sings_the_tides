@@ -159,6 +159,14 @@ post '/tides' do
   haml :tides, :layout => true
 end
 
+post '/send' do
+  name = params[:name]
+  email = params[:email]
+  message = params[:message]
+  Pony.mail(:from => "#{email}", :to => 'beaugaines@gmail.com', :subject =>
+    "Message from #{email} re Sinatra Tides Site", :body => message)
+end
+
 after do
   # redis!
 end
