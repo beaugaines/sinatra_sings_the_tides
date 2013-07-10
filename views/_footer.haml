@@ -4,9 +4,26 @@
       %li
         %a{:href => "/about"} About
       %li
-        %a{:href => "#"} Contact
+        %a.contact{:href => javascript:void(0)} Contact
   .copy
     %p
       %span &copy;
       %a{:href => "http://www.beaugain.es"} Beau Gaines
 
+
+  .contact-form
+    %form{:action => "/send", :method => 'post', :id => 'formsend'}
+      %fieldset
+        %h1 Say Hi!
+        %ul
+          %li
+            %label{:for => "name"}Name:
+            %input{:type => "text", :name => "name", :id => "name",:class => "text"}
+          %li
+            %label{:for => "mail"}Email:
+            %input{:type => "text", :name => "mail", :id => "mail", :class => "text"}
+          %li
+            %label{:for => "message"}Message:
+            %textarea{:name => "message", :id => "message", :class =>"text"}   
+          %li               
+            %input{:type => "submit", :value => "Send", :id => "submit"}
