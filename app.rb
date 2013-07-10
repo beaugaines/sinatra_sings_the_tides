@@ -33,8 +33,6 @@ state_hash = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samo
  "South Dakota"=>"SD", "Tennessee"=>"TN", "Texas"=>"TX", "Utah"=>"UT", "Virginia"=>"VA", "Virgin Islands"=>"VI",
  "Vermont"=>"VT", "Washington"=>"WA", "Wisconsin"=>"WI", "West Virginia"=>"WV", "Wyoming"=>"WY" }
 
-# access Wundround key
-wunderground_key = ENV['WUNDERGROUND_KEY']
 
 # helpers
 require './lib/render_partial'
@@ -45,12 +43,13 @@ configure do
   set :public_dir, 'public'
   set :haml, { :format => :html5 }
   set :sass, { :style => :compact, :debug_info => false }
+  set :wunderground_key, ENV['WUNDERGROUND_KEY']
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
 before do
   # new wunderground object
-  @w_api ||= Wunderground.new(wunderground_key)
+  @w_api ||= Wunderground.new(settings.wunderground_key)
 end
 
 
