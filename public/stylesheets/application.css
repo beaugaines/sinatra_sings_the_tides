@@ -95,8 +95,21 @@ input.sinatra-pink:hover {
 }
 
 #contact-form {
+  margin-top: 1em;
+  margin-left: 0.7em;
   display: none;
   clear: both;
+}
+#contact-form label {
+  padding-right: 0.4em;
+  display: inline !important;
+}
+#contact-form input {
+  margin-left: 0.8em;
+  display: inline !important;
+}
+#contact-form textarea {
+  margin-left: 0.8em;
 }
 
 /* BASE */
