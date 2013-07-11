@@ -19,8 +19,15 @@
   });
 
   $(function() {
-    $('#contact').click(function() {});
-    return $('#contact_form').show();
+    return $('#contact').click(function(e) {
+      var top;
+
+      top = $('#contact-form').offset().top;
+      $('#contact-form').show();
+      return $('html, body').animate({
+        scrollTop: '700px'
+      }, 2000, 'easeOutExpo');
+    });
   });
 
   $(function() {
@@ -39,7 +46,7 @@
       $anchor = $(this);
       $('html, body').stop().animate({
         scrollTop: $($anchor.attr('href')).offset().top
-      }, 500, 'easeInOutExpo');
+      }, 2000, 'easeOutExpo');
       return e.preventDefault();
     });
   });

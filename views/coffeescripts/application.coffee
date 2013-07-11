@@ -21,8 +21,11 @@ $ ->
 # contact form reveal
 
 $ ->
-  $('#contact').click ->
-  $('#contact_form').show()
+  $('#contact').click (e) ->
+    top = $('#contact-form').offset().top
+    $('#contact-form').show()
+    $('html, body').animate({scrollTop: '700px'}, 2000, 'easeOutExpo')
+    # $(window).scrollTop $("#contact-form").offset().top
   # $('#rollup').show()
   # $('#rollup').click ->
   #   $('#content').slideToggle()
@@ -45,7 +48,7 @@ $ ->
     $anchor = $(@)
     $('html, body').stop().animate({
       scrollTop: $($anchor.attr('href')).offset().top
-    }, 500, 'easeInOutExpo')
+    }, 2000, 'easeOutExpo')
     e.preventDefault()
     
 # $ ->    

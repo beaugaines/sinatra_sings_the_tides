@@ -96,6 +96,7 @@ input.sinatra-pink:hover {
 
 #contact-form {
   display: none;
+  clear: both;
 }
 
 /* BASE */
@@ -150,10 +151,6 @@ body {
   font: 1.6em "Sacramento", "Helvetica Neue", sans-serif;
   background: #4599da;
   color: #0d0d0d;
-}
-
-.main {
-  height: 19em;
 }
 
 .frank {
