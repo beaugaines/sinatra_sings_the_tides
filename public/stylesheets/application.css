@@ -94,6 +94,10 @@ input.sinatra-pink:hover {
   opacity: 0.7;
 }
 
+#contact-form {
+  display: none;
+}
+
 /* BASE */
 html {
   *zoom: 1;
