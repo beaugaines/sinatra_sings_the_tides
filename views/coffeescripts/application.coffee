@@ -20,11 +20,12 @@ $ ->
 
 # contact form reveal
 
-# $ ->
-#   $('#contact_form').hide()
-#   $('#rollup').show()
-#   $('#rollup').click ->
-#     $('#content').slideToggle()
+$ ->
+  $('#contact').click ->
+  $('#contact_form').show()
+  # $('#rollup').show()
+  # $('#rollup').click ->
+  #   $('#content').slideToggle()
 
 
 # contact form submit

@@ -3,7 +3,7 @@ require 'coffee-script'
 namespace :js do
   desc "compile coffee-scripts from ./views to ./public/javascripts"
   task :compile do
-    source = "views/"
+    source = "views/coffeescripts/"
     javascripts = "public/javascripts/"
 
     Dir.foreach(source) do |cf|
