@@ -18,6 +18,25 @@ $ ->
         $('#results').html('No results for that location')
 
 
+# contact form reveal
+
+$ ->
+  $('#content').hide()
+  $('#rollup').show()
+  $('#rollup').click ->
+    $('#content').slideToggle()
+
+
+# contact form submit
+
+$ ->
+  $("#formsend").submit ->
+    $.post $(@).attr('action'), $(@).serialize(), (->
+      $('fieldset').html '<h1>Thank you for getting in touch!</h1>'
+    ), 'text'
+    false
+
+
 
 # smooth scrollin ease in
 $ ->
@@ -54,12 +73,6 @@ $ ->
     alert('Error: ' + errors[error.code])
 
     
-
-# $ ->
-#   $('#content').hide()
-#   $('#rollup').show()
-#   $('#rollup').click ->
-#     $('#content').slideToggle()
 
    
 
