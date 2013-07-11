@@ -102,6 +102,7 @@ get '/' do
 end
 
 get '/about' do
+  expires 86400, :public, :must_revalidate
   haml :about
 end
 
@@ -128,6 +129,7 @@ def format_search_params
 end
 
 post '/tides' do
+  expires 3600, :public, :must_revalidate
   # initialize collection object
   tides_list = []
   # get state and city from params
