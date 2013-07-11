@@ -175,3 +175,7 @@ end
 not_found do
   'Ugh.  Nothin here. Sorry about that.'
 end
+
+error do
+  'The system experiences an error.  Please try again later'
+end
