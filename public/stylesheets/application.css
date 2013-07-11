@@ -98,18 +98,20 @@ input.sinatra-pink:hover {
   margin-top: 1em;
   margin-left: 0.7em;
   display: none;
-  clear: both;
-}
-#contact-form label {
-  padding-right: 0.4em;
-  display: inline !important;
 }
 #contact-form input {
   margin-left: 0.8em;
-  display: inline !important;
+  width: 45%;
+}
+#contact-form #submit {
+  width: 15%;
+  margin: 1.5em 0 1em 2em;
 }
 #contact-form textarea {
-  margin-left: 0.8em;
+  margin: 1.2em 0 0 1.8em;
+  display: block;
+  height: 8em;
+  width: 80%;
 }
 
 /* BASE */
@@ -266,6 +268,7 @@ footer {
   padding-top: 1em;
   height: 3em;
   clear: both;
+  margin-bottom: 1em;
 }
 footer nav.main {
   width: 49.15254%;

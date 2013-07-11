@@ -14,16 +14,15 @@
 #contact-form
   %form{:action => "/send", :method => 'post', :id => 'formsend'}
     %fieldset
-      %h1 Say Hi!
       %ul
         %li
           %label{:for => "name"}Name:
-          %input{:type => "text", :name => "name", :id => "name",:class => "text"}
+          %input{:type => "text", :name => "name", :id => "name"}
         %li
           %label{:for => "mail"}Email:
-          %input{:type => "text", :name => "mail", :id => "mail", :class => "text"}
+          %input{:type => "text", :name => "mail", :id => "mail"}
         %li
           %label{:for => "message"}Message:
-          %textarea{:name => "message", :id => "message", :class =>"text"}   
+          %textarea{:name => "message", :id => "message"}   
         %li               
-          %input{:type => "submit", :value => "Send", :id => "submit"}
+          %input{:type => "submit", :value => "Send", :id => "submit", :class => 'sinatra-pink'}
