@@ -51,7 +51,7 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
-before do
+before('/tides') do
   # new wunderground object
   @w_api ||= Wunderground.new('7d43f996448b0cfa')
 end
