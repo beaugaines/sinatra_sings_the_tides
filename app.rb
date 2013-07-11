@@ -5,6 +5,7 @@ require 'wunderground'
 require 'haml'
 require 'susy'
 require 'unicorn'
+require 'pony'
 
 # monkey patch Time
 class Time
