@@ -24,7 +24,7 @@ $ ->
   $('#contact').click (e) ->
     top = $('#contact-form').offset().top
     $('#contact-form').show()
-    $('html, body').animate({scrollTop: '850px'}, 2000, 'easeOutExpo')
+    $('html, body').animate({scrollTop: '900px'}, 2000, 'easeOutExpo')
     # $(window).scrollTop $("#contact-form").offset().top
   # $('#rollup').show()
   # $('#rollup').click ->
