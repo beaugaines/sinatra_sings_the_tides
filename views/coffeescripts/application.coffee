@@ -36,10 +36,12 @@ $ ->
 $ ->
   $("#formsend").submit ->
     $.post $(@).attr('action'), $(@).serialize(), (->
-      $('fieldset').html '<h1>Thank you for getting in touch!</h1>'
-    ), 'text'
-    false
-
+    #   $('fieldset').html '<h1>Thank you for getting in touch!</h1>'
+    # ), 'text'
+    # false
+    $('#contact-form').hide()
+    $('#thanks').show()
+    )
 
 
 # smooth scrollin ease in
