@@ -116,7 +116,8 @@ input.sinatra-pink:hover {
   font: inherit;
 }
 
-fieldset h1 {
+#thanks {
+  font-size: 1.8em !important;
   display: none;
   text-align: center;
   color: #782e04;
