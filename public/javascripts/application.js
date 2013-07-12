@@ -35,8 +35,8 @@
       $.post($(this).attr('action'), $(this).serialize(), (function() {
         return $('fieldset').html('');
       }), 'text');
-      $('.thanks').show();
-      return false;
+      false;
+      return $('.thanks').show();
     });
   });
 

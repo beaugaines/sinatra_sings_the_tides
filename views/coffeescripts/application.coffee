@@ -38,8 +38,8 @@ $ ->
     $.post $(@).attr('action'), $(@).serialize(), (->
       $('fieldset').html ''
     ), 'text'
-    $('.thanks').show()
     false
+    $('.thanks').show()
 
 
 
