@@ -41,7 +41,8 @@ $ ->
     # false
     $('#contact-form').hide()
     $('#thanks').show()
-    )
+    ),
+    false
 
 
 # smooth scrollin ease in

@@ -32,7 +32,7 @@
 
   $(function() {
     return $("#formsend").submit(function() {
-      return $.post($(this).attr('action'), $(this).serialize(), (function() {}, $('#contact-form').hide(), $('#thanks').show()));
+      return $.post($(this).attr('action'), $(this).serialize(), (function() {}, $('#contact-form').hide(), $('#thanks').show()), false);
     });
   });
 
