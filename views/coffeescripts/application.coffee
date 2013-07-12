@@ -49,7 +49,7 @@ $ ->
     $('#contact-form').hide()
     $('#thanks').fadeIn(800)
     ), 'text'
-    pulsate
+    # pulsate   // cant get this to work now, annoying
     false
 
 

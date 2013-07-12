@@ -43,7 +43,6 @@
   $(function() {
     return $("#formsend").submit(function() {
       $.post($(this).attr('action'), $(this).serialize(), (function() {}, $('#contact-form').hide(), $('#thanks').fadeIn(800)), 'text');
-      pulsate;
       return false;
     });
   });
