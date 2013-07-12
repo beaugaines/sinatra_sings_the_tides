@@ -41,7 +41,7 @@ $ ->
     # false
     $('#contact-form').hide()
     $('#thanks').show()
-    ),
+    ), 'text'
     false
 
 
