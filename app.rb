@@ -52,7 +52,7 @@ end
 
 before('/tides') do
   wunderground_key ||= ENV['WUNDERGROUND_KEY']
-  @w_api ||= Wunderground.new('7d43f996448b0cfa')
+  @w_api ||= Wunderground.new(wunderground_key)
 end
 
 
