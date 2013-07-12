@@ -134,11 +134,19 @@ html {
   margin-left: auto;
   margin-right: auto;
   vertical-align: baseline !important;
+  background: #4599da;
 }
 html:after {
   content: "";
   display: table;
   clear: both;
+}
+
+body {
+  font: 1.6em "Sacramento", "Helvetica Neue", sans-serif;
+  color: #0d0d0d;
+  background-image: url('/images/50s_blue_pattern.jpg?1373047739') repeat;
+  z-index: 1;
 }
 
 a {
@@ -155,27 +163,22 @@ a:focus, a:active {
 
 /* HEADER */
 header {
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  -ms-border-radius: 6px;
-  -o-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 0.2em;
+  -moz-border-radius: 0.2em;
+  -ms-border-radius: 0.2em;
+  -o-border-radius: 0.2em;
+  border-radius: 0.2em;
   background: #e4a131;
   margin: 1em 1em;
   height: 3em;
-  padding: 0 15px;
+  padding: 0 0.7em;
 }
 header .logo {
   width: 100%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
-}
-
-body {
-  font: 1.6em "Sacramento", "Helvetica Neue", sans-serif;
-  background: #4599da;
-  color: #0d0d0d;
+  margin-top: 0.4em;
 }
 
 .frank {
@@ -184,7 +187,7 @@ body {
   margin-right: 1.69492%;
   display: inline;
   background: url('/images/frank.png?1373047739') no-repeat;
-  height: 500px;
+  height: 492px;
   background-size: contain;
 }
 
@@ -265,6 +268,21 @@ body {
   margin-right: 0;
   *margin-left: -1em;
   display: inline;
+  margin-bottom: 1em;
+}
+.about p {
+  padding-right: 1.5em;
+}
+.about li {
+  margin-left: 0.5em;
+  padding-left: 3em;
+  height: 2.5em;
+  background: url('/images/small-fedora.png?1373661276') no-repeat;
+  z-index: 1;
+  color: #b43222;
+}
+.about li:first-child {
+  margin-top: 0.7em;
 }
 
 /* FOOTER */
@@ -276,7 +294,7 @@ footer {
   border-radius: 0.2em;
   background: #caae30;
   padding-top: 1em;
-  height: 3em;
+  height: 2.5em;
   clear: both;
   margin-bottom: 1em;
 }
@@ -290,6 +308,7 @@ footer nav.main ul {
   float: left;
 }
 footer nav.main ul li {
+  padding: 0 0.3em;
   display: inline;
 }
 footer .copy {
@@ -301,6 +320,7 @@ footer .copy {
 }
 footer .copy p {
   float: right;
+  padding-right: 1em;
 }
 footer .copy span {
   color: #6f6f6b;

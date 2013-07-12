@@ -1,0 +1,61 @@
+/* FORMS */
+
+input[type=text],input[type=url],input[type=email],input[type=password],input[type=tel]
+  -webkit-appearance: none
+  -moz-appearance: none
+  display: block
+  margin: 0.4em 0
+  padding-left: 0.6em
+  width: 60%
+  height: 1.6em
+  line-height: 1.6em
+  font-size: 1em
+  font: inherit
+  // border: 1px solid $sinatra-scarlet
+
+input.sinatra-pink
+  font: inherit
+  font-size: 0.8em
+  color: black
+  padding: 10px 20px
+  margin: 0.5em 0 0 3.5em
+  background: -moz-linear-gradient(top, #f46693 0%, #f46670)
+  background: -webkit-gradient(linear, left top, left bottom, from(#f46693), to(#f46670))
+  -moz-border-radius: 30px
+  -webkit-border-radius: 30px
+  border-radius: 30px
+  border: 0px solid #ffffff
+  -moz-box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 0, 217, 1)
+  -webkit-box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 0, 217, 1)
+  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 0, 217, 1)
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.3)
+  &:hover
+    opacity: 0.7
+    
+
+#contact-form
+  margin-top: 1em
+  margin-left: 0.7em
+  display: none
+  input
+    margin-left: 0.8em
+    width: 45%
+  #submit
+    width: 15%
+    margin: 1.5em 0 1em 2em
+    // display: inline !important
+  textarea
+    margin: 0.5em 0 0 0.7em
+    display: block
+    height: 8em
+    width: 60%
+    padding: 0.5em
+    font: inherit
+
+#thanks
+  font-size: 1.8em !important
+  display: none
+  text-align: center
+  color: $sinatra-umber
+  margin: 1em 0
+

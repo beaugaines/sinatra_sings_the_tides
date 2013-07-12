@@ -5,74 +5,8 @@
 @import compass/typography/lists/bullets
 @import susy
 @import base
+@import forms
 
-@mixin tides ($tide, $bg, $text-al, $padd)
-  .#{$tide}_tide 
-    background: $bg
-    text-align: $text-al
-    padding: $padd
-
-
-/* FORMS */
-
-input[type=text],input[type=url],input[type=email],input[type=password],input[type=tel]
-  -webkit-appearance: none
-  -moz-appearance: none
-  display: block
-  margin: 0.4em 0
-  padding-left: 0.6em
-  width: 60%
-  height: 1.6em
-  line-height: 1.6em
-  font-size: 1em
-  font: inherit
-  // border: 1px solid $sinatra-scarlet
-
-input.sinatra-pink
-  font: inherit
-  font-size: 0.8em
-  color: black
-  padding: 10px 20px
-  margin: 0.5em 0 0 3.5em
-  background: -moz-linear-gradient(top, #f46693 0%, #f46670)
-  background: -webkit-gradient(linear, left top, left bottom, from(#f46693), to(#f46670))
-  -moz-border-radius: 30px
-  -webkit-border-radius: 30px
-  border-radius: 30px
-  border: 0px solid #ffffff
-  -moz-box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 0, 217, 1)
-  -webkit-box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 0, 217, 1)
-  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.5), inset 0px 0px 1px rgba(255, 0, 217, 1)
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2), 0px 1px 0px rgba(255, 255, 255, 0.3)
-  &:hover
-    opacity: 0.7
-    
-
-#contact-form
-  margin-top: 1em
-  margin-left: 0.7em
-  display: none
-  input
-    margin-left: 0.8em
-    width: 45%
-  #submit
-    width: 15%
-    margin: 1.5em 0 1em 2em
-    // display: inline !important
-  textarea
-    margin: 0.5em 0 0 0.7em
-    display: block
-    height: 8em
-    width: 60%
-    padding: 0.5em
-    font: inherit
-
-#thanks
-  font-size: 1.8em !important
-  display: none
-  text-align: center
-  color: $sinatra-umber
-  margin: 1em 0
 
 
 /* BASE */
@@ -80,6 +14,13 @@ input.sinatra-pink
 html
   @include container
   vertical-align: baseline !important
+  background: $sinatra-blue
+
+body
+  +font-default
+  color: #0d0d0d
+  background-image: image-url('50s_blue_pattern.jpg') repeat
+  z-index: 1
 
 // Links
 a
@@ -99,27 +40,21 @@ a
 /* HEADER */
 
 header
-  +border-radius(6px)
+  +border-radius(0.2em)
   background: $sinatra-orange
   // border: 1px solid #ccc
   margin: 1em 1em
   height: 3em
-  padding: 0 15px
+  padding: 0 0.7em
   .logo
     @include span-columns(12,12)
+    margin-top: 0.4em
 
-body
-  +font-default
-  background: $sinatra-blue
-  color: #0d0d0d
-
-.main
-  // height: 100%
 
 .frank
   @include span-columns(6,12)
   background: image-url('frank.png') no-repeat
-  height: image-height('frank.jpg')
+  height: image-height('frank.png')
   background-size: contain
 
 .tides
@@ -167,9 +102,27 @@ body
   margin-top: 1.5em
   font-size: 1.5em !important
 
+
+
 /* ABOUT */
 .about
   @include span-columns(6 omega,12)
+  margin-bottom: 1em
+  p
+    padding-right: 1.5em
+  li
+    margin-left: 0.5em
+    padding-left: 3em
+    height: 2.5em
+    background: image-url('small-fedora.png') no-repeat
+    z-index: 1
+    color: $sinatra-scarlet
+    &:first-child
+      margin-top: 0.7em
+    &:last-child
+      // margin-bottom: 0.2em
+
+
 
 /* FOOTER */
 
@@ -177,7 +130,7 @@ footer
   +border-radius(0.2em)
   background: $sinatra-mustard
   padding-top: 1em
-  height: 3em
+  height: 2.5em
   clear: both
   margin-bottom: 1em
   nav.main
@@ -186,12 +139,13 @@ footer
     ul
       float: left
       li
+        padding: 0 0.3em
         display: inline
   .copy
     @include span-columns(6 omega,12)
-    // padding-right: 1em
     p
       float: right
+      padding-right: 1em
     span
       color: $link-color
 
