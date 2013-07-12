@@ -33,6 +33,13 @@ $ ->
 
 # contact form submit
 
+pulsate = ->
+  $("#thanks").animate(
+    opacity: 0.2
+  , 1000, "linear").animate
+    opacity: 1
+  , 1000, "linear", pulsate
+
 $ ->
   $("#formsend").submit ->
     $.post $(@).attr('action'), $(@).serialize(), (->
@@ -40,9 +47,10 @@ $ ->
     # ), 'text'
     # false
     $('#contact-form').hide()
-    $('#thanks').show()
+    $('#thanks').fadeIn(800)
     ), 'text'
     false
+    pulsate
 
 
 # smooth scrollin ease in

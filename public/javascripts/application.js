@@ -1,4 +1,6 @@
 (function() {
+  var pulsate;
+
   $(function() {
     return $("").submit(function(e) {
       e.preventDefault();
@@ -30,10 +32,19 @@
     });
   });
 
+  pulsate = function() {
+    return $("#thanks").animate({
+      opacity: 0.2
+    }, 1000, "linear").animate({
+      opacity: 1
+    }, 1000, "linear", pulsate);
+  };
+
   $(function() {
     return $("#formsend").submit(function() {
-      $.post($(this).attr('action'), $(this).serialize(), (function() {}, $('#contact-form').hide(), $('#thanks').show()), 'text');
-      return false;
+      $.post($(this).attr('action'), $(this).serialize(), (function() {}, $('#contact-form').hide(), $('#thanks').fadeIn(800)), 'text');
+      false;
+      return pulsate;
     });
   });
 
