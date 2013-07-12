@@ -166,7 +166,7 @@ post '/send' do
   email = params[:email]
   message = params[:message]
   Pony.mail(:from => "#{email}", :to => 'beaugaines@gmail.com', :subject =>
-    "Message from #{email} re Sinatra Tides Site", :body => message, :via => :sendmail)
+    "Message from #{email} re Sinatra Tides Site", :body => message, :via => :smtp)
 end
 
 after do
