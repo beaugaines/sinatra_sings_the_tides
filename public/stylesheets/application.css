@@ -116,6 +116,12 @@ input.sinatra-pink:hover {
   font: inherit;
 }
 
+.thanks {
+  display: none;
+  text-align: center;
+  color: #782e04;
+}
+
 /* BASE */
 html {
   *zoom: 1;

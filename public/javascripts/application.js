@@ -33,8 +33,9 @@
   $(function() {
     return $("#formsend").submit(function() {
       $.post($(this).attr('action'), $(this).serialize(), (function() {
-        return $('fieldset').html('<h1>Thank you for getting in touch!</h1>');
+        return $('fieldset').html('');
       }), 'text');
+      $('.thanks').show();
       return false;
     });
   });

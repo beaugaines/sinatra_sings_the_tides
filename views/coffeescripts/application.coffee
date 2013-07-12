@@ -36,8 +36,9 @@ $ ->
 $ ->
   $("#formsend").submit ->
     $.post $(@).attr('action'), $(@).serialize(), (->
-      $('fieldset').html '<h1>Thank you for getting in touch!</h1>'
+      $('fieldset').html ''
     ), 'text'
+    $('.thanks').show()
     false
 
 
