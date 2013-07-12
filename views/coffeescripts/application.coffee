@@ -49,8 +49,8 @@ $ ->
     $('#contact-form').hide()
     $('#thanks').fadeIn(800)
     ), 'text'
-    false
     pulsate
+    false
 
 
 # smooth scrollin ease in
