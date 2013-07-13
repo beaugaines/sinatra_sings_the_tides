@@ -46,13 +46,16 @@ configure do
   set :root, File.dirname(__FILE__)
   set :public_dir, 'public'
   set :haml, { :format => :html5 }
+  set :wund_key, system('echo $WUNDERGROUND_KEY')
   set :sass, { :style => :compact, :debug_info => false }
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
+
+
 before('/tides') do
-  wunderground_key ||= system('echo $WUNDERGROUND_KEY')
-  @w_api ||= Wunderground.new(wunderground_key)
+  # wunderground_key ||= system('echo $WUNDERGROUND_KEY')
+  @w_api ||= Wunderground.new(wund_key)
 end
 
 
