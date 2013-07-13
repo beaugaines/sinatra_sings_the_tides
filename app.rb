@@ -46,11 +46,11 @@ configure do
   set :root, File.dirname(__FILE__)
   set :public_dir, 'public'
   set :haml, { :format => :html5 }
-  set :wund_key, system('echo $WUNDERGROUND_KEY')
   set :sass, { :style => :compact, :debug_info => false }
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
+set :wund_key, system('echo $WUNDERGROUND_KEY')
 
 
 before('/tides') do
