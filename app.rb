@@ -50,12 +50,10 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
-set :wund_key, system('echo $WUNDERGROUND_KEY')
-
 
 before('/tides') do
   # wunderground_key ||= system('echo $WUNDERGROUND_KEY')
-  @w_api ||= Wunderground.new(:wund_key)
+  @w_api ||= Wunderground.new('7d43f996448b0cfa')
 end
 
 
