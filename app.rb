@@ -178,5 +178,5 @@ not_found do
 end
 
 error do
-  'The system experiences an error.  Please try again later'
+  'The system experienced an error.  Please try again later'
 end
