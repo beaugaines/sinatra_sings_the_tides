@@ -55,7 +55,7 @@ set :wund_key, system('echo $WUNDERGROUND_KEY')
 
 before('/tides') do
   # wunderground_key ||= system('echo $WUNDERGROUND_KEY')
-  @w_api ||= Wunderground.new(wund_key)
+  @w_api ||= Wunderground.new(:wund_key)
 end
 
 
