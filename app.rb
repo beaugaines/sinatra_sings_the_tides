@@ -51,7 +51,7 @@ configure do
 end
 
 before('/tides') do
-  wunderground_key ||= ENV['WUNDERGROUND_KEY']
+  wunderground_key ||= system('echo $WUNDERGROUND_KEY')
   @w_api ||= Wunderground.new(wunderground_key)
 end
 
