@@ -99,7 +99,6 @@ end
 # routes
 get '/' do
   haml :index
-  binding.pry
 end
 
 get '/about' do
