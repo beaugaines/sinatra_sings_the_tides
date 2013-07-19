@@ -22,7 +22,7 @@ class Time
   end
 end
 
-state_hash = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samoa"=>"AS",
+@state_hash = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samoa"=>"AS",
  "Arizona"=>"AZ", "California"=>"CA", "Colorado"=>"CO", "Connecticut"=>"CT",
  "District of Columbia"=>"DC", "Delaware"=>"DE", "Florida"=>"FL", "Georgia"=>"GA",
  "Guam"=>"GU", "Hawaii"=>"HI", "Iowa"=>"IA", "Idaho"=>"ID", "Illinois"=>"IL", "Indiana"=>"IN",
@@ -123,7 +123,7 @@ def format_search_params
     city = city.split.join('_')
   end
   if state.length > 2
-    state = state_hash[state]
+    state = @state_hash[state]
   end
   [city, state]
 end
