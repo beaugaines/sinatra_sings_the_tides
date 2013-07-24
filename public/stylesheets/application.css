@@ -57,7 +57,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 @font-face {
   font-family: "Sacramento";
   src: url('/public/stylesheets/fonts/sacramento-regular-webfont.eot');
-  src: url('/public/stylesheets/fonts/sacramento-regular-webfont.eot?#iefix') format('eot'), url('/public/stylesheets/fonts/sacramento-regular-webfont.svg') format('svg'), url('/public/stylesheets/fonts/sacremento-regular-webfont.ttf') format('truetype'), url('/public/stylesheets/fonts/sacramento-regular-webfont.woff') format('woff');
+  src: url('/public/stylesheets/fonts/sacramento-regular-webfont.eot?#iefix') format('eot'), url('/public/stylesheets/fonts/sacramento-regular-webfont.svg') format('svg'), url('/public/stylesheets/fonts/sacramento-regular-webfont.ttf') format('truetype'), url('/public/stylesheets/fonts/sacramento-regular-webfont.woff') format('woff');
 }
 
 /* FORMS */
