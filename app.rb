@@ -81,10 +81,9 @@ def distance_of_time_in_words(minutes)
    when minutes < 50
      pluralize(minutes, "minute")
    when minutes < 90
-     "about one hour
-     "#{(minutes / 60).round} hours"
+     "about one hour"
    when minutes < 1440
-     "one day"
+     "#{(minutes / 60).round} hours"
    when minutes < 2880
      "about one day"
    else
@@ -95,7 +94,6 @@ end
 
 # routes
 get '/' do
-  binding.pry
   haml :index
 end
 
