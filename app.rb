@@ -128,7 +128,6 @@ end
 
 # routes
 get '/' do
-  binding.pry
   haml :index
 end
 
