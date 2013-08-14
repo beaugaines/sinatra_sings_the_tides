@@ -108,26 +108,27 @@ def fuzzy_temperature(temperature)
     when temperature < 90
       'hot!'
     when temperature < 100
-      'broiling'
+      'broiling!'
     when temperature < 110
       'death valley-esque!'
     else
-      "you don't wanna know"
+      "you don't wanna know..."
     end
-  end
 end
 
 
-def fetch_forecast
+def fetch_forecast(state,city)
   weather_object = @w_api.forecast_for(state, city)['forecast']['simpleforecast']['forecastday'][0]
   wund_weather_icon_url = weather_object['icon_url']
   wund_temperature = weather_object['high']['fahrenheit']
   ave_humidity = weather_object['avehumidity']
   max_humidity = weather_object['maxumidity']
+  [wund_temperature, ave_humidity]
 end
 
 # routes
 get '/' do
+  binding.pry
   haml :index
 end
 
@@ -166,6 +167,8 @@ post '/tides' do
   city, state = format_search_params
   # fetch tides object
   next_highs = fetch_tides(state, city)
+  #fetch weather object
+  weather = fetch_forecast(state, city)
   begin
     # calculate last high tide
     last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
