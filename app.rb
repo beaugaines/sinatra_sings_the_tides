@@ -95,6 +95,7 @@ end
 
 # routes
 get '/' do
+  binding.pry
   haml :index
 end
 
@@ -114,7 +115,7 @@ end
 
 def format_search_params
   city = params[:city]
-  state = params[:state].upcase
+  state = params[:state].capitalize
   # check format of city and state
   if city.split.length > 1
     city = city.split.join('_')

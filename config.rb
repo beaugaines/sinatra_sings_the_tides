@@ -21,3 +21,4 @@ fonts_dir             = File.join 'public', 'stylesheets', 'fonts'
 preferred_syntax      = :sass
 
 relative_assets       = false
+
