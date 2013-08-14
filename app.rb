@@ -91,6 +91,40 @@ def distance_of_time_in_words(minutes)
  end
 end
 
+def fuzzy_temperature(temperature)
+  case
+    when temperature < 30
+      'bring your drysuit and some whiskey!'
+    when temperature < 40
+      'mighty cold'
+    when temperature < 50
+      'cold'
+    when temperature < 60
+      'pretty cool'
+    when temperature < 70
+      'cool-ish'
+    when temperature < 80
+      'wonderful!'
+    when temperature < 90
+      'hot!'
+    when temperature < 100
+      'broiling'
+    when temperature < 110
+      'death valley-esque!'
+    else
+      "you don't wanna know"
+    end
+  end
+end
+
+
+def fetch_forecast
+  weather_object = @w_api.forecast_for(state, city)['forecast']['simpleforecast']['forecastday'][0]
+  wund_weather_icon_url = weather_object['icon_url']
+  wund_temperature = weather_object['high']['fahrenheit']
+  ave_humidity = weather_object['avehumidity']
+  max_humidity = weather_object['maxumidity']
+end
 
 # routes
 get '/' do
