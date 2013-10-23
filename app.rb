@@ -38,8 +38,7 @@ configure do
 end
 
 configure :production do
-  email_options, {
-    :from => "blah@email.com",
+  Pony.options = {
     :via => :smtp,
     :via_options => {
       :address => 'smtp.sendgrid.net',
@@ -51,8 +50,6 @@ configure :production do
       :enable_starttls_auto => true
     }
   }
-  # add options to Pony
-  Pony.options = settings.email_options
 end
 
 
