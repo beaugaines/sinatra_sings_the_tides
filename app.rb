@@ -4,9 +4,9 @@ require 'sinatra/static_assets'
 require 'wunderground'
 require 'haml'
 require 'susy'
-require 'unicorn'
 require 'pony'
 require 'pry'
+require 'titleize'
 
 
 # monkey patch Time
@@ -173,12 +173,13 @@ post '/tides' do
   expires 3600, :public, :must_revalidate
   # initialize collection object
   tides_list = []
+  @city = params[:city].titleize
   # get state and city from params
-  @city, state = format_search_params
+  city, state = format_search_params
   # fetch tides object
-  next_highs = fetch_tides(state, @city)
+  next_highs = fetch_tides(state, city)
   #fetch weather object
-  weather = fetch_forecast(state, @city)
+  weather = fetch_forecast(state, city)
   begin
     # calculate last high tide
     last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)

@@ -17,6 +17,4 @@ gem 'rake'
 gem 'wunderground'
 gem 'pony'
 gem 'pry'
-
-# deploy
-gem 'unicorn'
+gem 'titleize'
