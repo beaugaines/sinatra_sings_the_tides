@@ -174,11 +174,11 @@ post '/tides' do
   # initialize collection object
   tides_list = []
   # get state and city from params
-  city, state = format_search_params
+  @city, state = format_search_params
   # fetch tides object
-  next_highs = fetch_tides(state, city)
+  next_highs = fetch_tides(state, @city)
   #fetch weather object
-  weather = fetch_forecast(state, city)
+  weather = fetch_forecast(state, @city)
   begin
     # calculate last high tide
     last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
