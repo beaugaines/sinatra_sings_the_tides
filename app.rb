@@ -37,6 +37,25 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
+configure :production do
+  email_options, {
+    :from => "blah@email.com",
+    :via => :smtp,
+    :via_options => {
+      :address => 'smtp.sendgrid.net',
+      :port => '587',
+      :domain => 'heroku.com',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  }
+  # add options to Pony
+  Pony.options = settings.email_options
+end
+
+
 STATE_HASH = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samoa"=>"AS",
    "Arizona"=>"AZ", "California"=>"CA", "Colorado"=>"CO", "Connecticut"=>"CT",
    "District of Columbia"=>"DC", "Delaware"=>"DE", "Florida"=>"FL", "Georgia"=>"GA",
@@ -50,14 +69,10 @@ STATE_HASH = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samo
    "Vermont"=>"VT", "Washington"=>"WA", "Wisconsin"=>"WI", "West Virginia"=>"WV", "Wyoming"=>"WY" }
  
 before('/tides') do
-  # wunderground_key ||= system('echo $WUNDERGROUND_KEY')
-  @w_api ||= Wunderground.new('7d43f996448b0cfa')
+  @w_api ||= Wunderground.new(ENV['WUNDERGROUND_KEY'])
 end
 
-
 # util fcns
-
-
 def timeago(time, options = {})
  start_date = options.delete(:start_date) || Time.new
  date_format = options.delete(:date_format) || :default
@@ -115,7 +130,6 @@ def fuzzy_temperature(temperature)
       "you don't wanna know..."
     end
 end
-
 
 def fetch_forecast(state,city)
   weather_object = @w_api.forecast_for(state, city)['forecast']['simpleforecast']['forecastday'][0]
@@ -195,11 +209,8 @@ post '/tides' do
 end
 
 post '/send' do
-  name = params[:name]
-  email = params[:email]
-  message = params[:message]
-  Pony.mail(:from => "#{email}", :to => 'beaugaines@gmail.com', :subject =>
-    "Message from #{email} re Sinatra Tides Site", :body => message, :via => :sendmail)
+  Pony.mail(:from => "#{params[:email]}", :to => 'beaugaines@gmail.com', :subject =>
+    "Message from #{params[:email]} re Sinatra Tides Site", :body => params[:message])
 end
 
 after do
