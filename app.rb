@@ -180,7 +180,6 @@ def format_search_params
 end
 
 post '/tides' do
-  binding.pry
   expires 3600, :public, :must_revalidate
   # initialize collection object
   tides_list = []

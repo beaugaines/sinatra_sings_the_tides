@@ -27,7 +27,7 @@
       top = $('#contact-form').offset().top;
       $('#contact-form').show();
       return $('html, body').animate({
-        scrollTop: '900px'
+        scrollTop: '1100px'
       }, 2000, 'easeOutExpo');
     });
   });
