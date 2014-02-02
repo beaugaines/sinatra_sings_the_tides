@@ -6,10 +6,8 @@ require 'haml'
 require 'susy'
 require 'pony'
 require 'pry'
-require 'titleize'
 
-
-# monkey patch Time
+# monkey patch Time and String
 class Time
   def meridian
     self.strftime("%p")
@@ -24,7 +22,15 @@ class Time
   end
 end
 
-
+class String
+  def titleize
+    no_caps = %w{of etc and by the for on is at to but nor or a via}
+    gsub(/\b[a-z]+/) { |w| no_caps.include?(w) ? w : w.capitalize }.
+      sub(/^[a-z]/) { |l| l.upcase }.
+      sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }
+  end
+end
+  
 # helpers
 require './lib/render_partial'
 
@@ -35,6 +41,10 @@ configure do
   set :haml, { :format => :html5 }
   set :sass, { :style => :compact, :debug_info => false }
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
+end
+
+configure :devlelopment do
+  enable :logging, :dump_errors, :raise_errors
 end
 
 configure :production do
@@ -66,7 +76,7 @@ STATE_HASH = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samo
    "Vermont"=>"VT", "Washington"=>"WA", "Wisconsin"=>"WI", "West Virginia"=>"WV", "Wyoming"=>"WY" }
  
 before('/tides') do
-  @w_api ||= Wunderground.new(ENV['WUNDERGROUND_KEY'])
+  @w_api ||= Wunderground.new('7d43f996448b0cfa')
 end
 
 # util fcns
@@ -163,17 +173,18 @@ def format_search_params
   if city.split.length > 1
     city = city.split.join('_')
   end
-  if state.length > 2
+  if state.length >   2
     state = STATE_HASH[state]
   end
   [city, state]
 end
 
 post '/tides' do
+  binding.pry
   expires 3600, :public, :must_revalidate
   # initialize collection object
   tides_list = []
-  @city = params[:city].titleize
+  @city = params[:city]
   # get state and city from params
   city, state = format_search_params
   # fetch tides object
