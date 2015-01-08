@@ -3,8 +3,10 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 # base
 gem 'sinatra'
+gem 'thin'
 gem 'sinatra-contrib'
 gem 'sinatra-static-assets'
+
 
 # styles
 gem 'haml'
