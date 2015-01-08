@@ -76,7 +76,7 @@ STATE_HASH = { "Alaska"=>"AK", "Alabama"=>"AL", "Arkansas"=>"AR", "American Samo
    "Vermont"=>"VT", "Washington"=>"WA", "Wisconsin"=>"WI", "West Virginia"=>"WV", "Wyoming"=>"WY" }
  
 before('/tides') do
-  @w_api ||= Wunderground.new('7d43f996448b0cfa')
+  @w_api ||= Wunderground.new(ENV['WUNDERGROUND_KEY'])
 end
 
 # util fcns
@@ -180,7 +180,6 @@ def format_search_params
 end
 
 post '/tides' do
-  expires 3600, :public, :must_revalidate
   # initialize collection object
   tides_list = []
   @city = params[:city]
