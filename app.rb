@@ -6,6 +6,8 @@ require 'haml'
 require 'susy'
 require 'pony'
 require 'pry'
+require 'dotenv'
+Dotenv.load
 
 # monkey patch Time and String
 class Time
@@ -43,7 +45,7 @@ configure do
   Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
 end
 
-configure :devlelopment do
+configure :development do
   enable :logging, :dump_errors, :raise_errors
 end
 
@@ -92,50 +94,53 @@ def timeago(time, options = {})
       return "#{distance} ago"
    end
  else
-    return "on #{DateTime.now.to_formatted_s(date_format)}"
+    "on #{DateTime.now.strftime('%B %e, %Y')}"
  end
 end
 
+
 def distance_of_time_in_words(minutes)
- case
-   when minutes < 1
-     "less than a minute"
-   when minutes < 50
-     pluralize(minutes, "minute")
-   when minutes < 90
-     "about one hour"
-   when minutes < 1440
-     "#{(minutes / 60).round} hours"
-   when minutes < 2880
-     "about one day"
-   else
-     "#{(minutes / 1440).round} days"
- end
+  case
+  when minutes < 1
+    "less than a minute"
+  when minutes == 1
+    "one minute"
+  when minutes < 50
+    "#{minutes} minutes"
+  when minutes < 90
+    "about one hour"
+  when minutes < 1440
+    "#{(minutes / 60).round} hours"
+  when minutes < 2880
+    "about one day"
+  else
+    "#{(minutes / 1440).round} days"
+  end
 end
 
 def fuzzy_temperature(temperature)
   case
-    when temperature < 30
-      'bring your drysuit and some whiskey!'
-    when temperature < 40
-      'mighty cold'
-    when temperature < 50
-      'cold'
-    when temperature < 60
-      'pretty cool'
-    when temperature < 70
-      'cool-ish'
-    when temperature < 80
-      'wonderful!'
-    when temperature < 90
-      'hot!'
-    when temperature < 100
-      'broiling!'
-    when temperature < 110
-      'death valley-esque!'
-    else
-      "you don't wanna know..."
-    end
+  when temperature < 30
+    'bring your drysuit and some whiskey!'
+  when temperature < 40
+    'mighty cold'
+  when temperature < 50
+    'cold'
+  when temperature < 60
+    'pretty cool'
+  when temperature < 70
+    'cool-ish'
+  when temperature < 80
+    'wonderful!'
+  when temperature < 90
+    'hot!'
+  when temperature < 100
+    'broiling!'
+  when temperature < 110
+    'death valley-esque!'
+  else
+    "you don't wanna know..."
+  end
 end
 
 def fetch_forecast(state,city)
@@ -159,7 +164,7 @@ end
 
 def fetch_tides(state, city)
   tides = @w_api.tide_for(state, city)
-  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..1]
+  tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..1]
 end
 
 def format_time time
@@ -186,9 +191,11 @@ post '/tides' do
   # get state and city from params
   city, state = format_search_params
   # fetch tides object
-  next_highs = fetch_tides(state, city)
+  tides = @w_api.tide_for(state, city)
+  next_highs = tides['tide']['tideSummary'].select { |t| t['data']['type'] == 'High Tide' }[0..1]
   #fetch weather object
   weather = fetch_forecast(state, city)
+  # binding.pry
   begin
     # calculate last high tide
     last_high = Time.at(next_highs.first['date']['epoch'].to_i - 12*60*60)
