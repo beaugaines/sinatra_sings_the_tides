@@ -7,7 +7,7 @@ require 'susy'
 require 'pony'
 require 'pry'
 require 'dotenv'
-Dotenv.load
+Dotenv.load if development?
 
 # monkey patch Time and String
 class Time
